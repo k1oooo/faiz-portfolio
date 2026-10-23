@@ -37,27 +37,27 @@ const steps = [
  */
 export default function Process() {
   return (
-    <section className="px-4 pb-10 pt-28 md:px-5 md:pb-12 md:pt-32">
-      <h1 className="text-[clamp(2rem,5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-fg">
+    <section className="px-4 pb-10 pt-28 md:flex md:h-svh md:min-h-[34rem] md:flex-col md:px-5 md:pb-5 md:pt-24">
+      <h1 className="text-[clamp(2rem,min(5vw,9svh),4.5rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-fg">
         <span className="block overflow-hidden pb-[0.08em]">
           <span className="block">Process</span>
         </span>
       </h1>
 
-      <ol className="mt-10 flex flex-col gap-9 md:mt-[6svh] md:gap-[min(5.5svh,4.5rem)]">
+      <ol className="mt-10 flex flex-col gap-9 md:mt-[3svh] md:min-h-0 md:flex-1 md:justify-between md:gap-0">
         {steps.map((step, i) => (
           <li
             key={step.title}
            
             className="grid items-start gap-x-4 gap-y-2 grid-cols-[auto_1fr] md:grid-cols-[17.4fr_42.6fr_40fr] md:gap-x-0"
           >
-            <span className="text-[clamp(1.5rem,2.6vw,2.75rem)] font-semibold leading-none tracking-[-0.03em] tabular-nums">
+            <span className="text-[clamp(1.5rem,min(2.6vw,4.4svh),2.75rem)] font-semibold leading-none tracking-[-0.03em] tabular-nums">
               {String(i + 1).padStart(2, "0")}
             </span>
-            <h2 className="text-[clamp(1.5rem,2.6vw,2.75rem)] font-semibold leading-none tracking-[-0.03em] text-fg">
+            <h2 className="text-[clamp(1.5rem,min(2.6vw,4.4svh),2.75rem)] font-semibold leading-none tracking-[-0.03em] text-fg">
               {step.title}
             </h2>
-            <p className="col-span-2 text-base leading-snug md:col-span-1 md:pr-2 md:text-[clamp(1rem,1.2vw,1.375rem)]">
+            <p className="col-span-2 text-base leading-snug md:col-span-1 md:pr-2 md:text-[clamp(1rem,min(1.2vw,2.3svh),1.375rem)]">
               {step.body}
             </p>
           </li>
