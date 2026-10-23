@@ -75,13 +75,16 @@ export default async function WorkPage({ params }: PageProps<"/[workID]">) {
       <Link
         href={`/${next.slug}`}
         data-reveal
-        className="group mt-20 block md:mt-32"
+        className="group relative mt-20 block aspect-[16/10] overflow-hidden rounded-2xl bg-surface md:mt-32"
       >
-        <p className="text-sm">Next project</p>
-        <p className="mt-2 flex items-center gap-3 text-[clamp(2rem,6vw,5rem)] font-semibold leading-none tracking-[-0.03em] text-fg">
-          {next.title}
-          <ArrowUpRight className="size-[0.7em] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" strokeWidth={1.5} />
-        </p>
+        <Image
+          src={next.image}
+          alt={`Next project: ${next.title}`}
+          fill
+          unoptimized
+          sizes="100vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+        />
       </Link>
     </article>
   );

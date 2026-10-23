@@ -21,10 +21,11 @@ export default function Home() {
         </h1>
       </section>
 
-      {/* Work: slides up over the hero, then pins and slides left */}
+      {/* Work: only the rounded top edge peeks over the hero, so none of the
+          project text shows until you scroll. It then pins and slides left. */}
       <section
         id="work"
-        className="relative z-10 -mt-24 overflow-hidden rounded-t-[2rem] bg-[#fcfcfc] md:-mt-32 md:rounded-t-[3rem]"
+        className="relative z-10 -mt-8 overflow-hidden rounded-t-[2rem] bg-[#fcfcfc] md:-mt-10 md:rounded-t-[3rem]"
       >
         <WorkShowcase />
       </section>
