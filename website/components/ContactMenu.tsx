@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Mail, MessageCircle } from "lucide-react";
 import { site } from "@/lib/site";
 
 const options = [
@@ -50,14 +50,14 @@ export default function ContactMenu() {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
-        className="inline-flex items-center gap-1 rounded-full bg-(--hdr-fg) px-3 py-1.5 text-[13px] font-semibold text-(--hdr-inv) sm:px-4 sm:py-2 sm:text-sm"
+        className="group inline-flex cursor-pointer select-none items-center gap-1.5 rounded-full bg-(--hdr-fg,#fff) px-3.5 py-1.5 text-[13px] font-semibold text-(--hdr-inv,#0a0a0a) shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_1px_2px_rgba(0,0,0,0.3),0_6px_16px_-6px_rgba(0,0,0,0.5)] ring-1 ring-black/10 transition duration-200 ease-out hover:-translate-y-px hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_2px_4px_rgba(0,0,0,0.3),0_10px_20px_-6px_rgba(0,0,0,0.55)] active:translate-y-0 active:scale-[0.97] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.25)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--hdr-fg,#fff) sm:px-4 sm:py-2 sm:text-sm"
       >
         Contact
-        <ArrowUpRight
+        <ChevronDown
           className={`size-4 transition-transform duration-300 ${
-            open ? "rotate-45" : ""
+            open ? "rotate-180" : ""
           }`}
-          strokeWidth={2}
+          strokeWidth={2.25}
         />
       </button>
 
@@ -70,14 +70,14 @@ export default function ContactMenu() {
             : "invisible -translate-y-1 scale-95 opacity-0"
         }`}
       >
-        <ul className="overflow-hidden rounded-2xl bg-(--hdr-fg) p-1.5 text-(--hdr-inv)">
+        <ul className="overflow-hidden rounded-2xl bg-(--hdr-fg,#fff) p-1.5 text-(--hdr-inv,#0a0a0a) shadow-[0_12px_32px_-8px_rgba(0,0,0,0.5)] ring-1 ring-black/10">
           {options.map(({ label, href, icon: Icon, external }) => (
             <li key={label}>
               <a
                 role="menuitem"
                 href={href}
                 {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-                className="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition-colors duration-200 hover:bg-[color-mix(in_srgb,var(--hdr-inv)_12%,transparent)]"
+                className="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition-colors duration-200 hover:bg-[color-mix(in_srgb,var(--hdr-inv,#0a0a0a)_12%,transparent)]"
               >
                 <Icon className="size-[18px]" strokeWidth={1.75} />
                 {label}

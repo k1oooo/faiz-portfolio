@@ -55,12 +55,12 @@ export default function NavPill() {
       className="fixed bottom-5 left-1/2 z-[60] -translate-x-1/2 lg:bottom-auto lg:top-[14px]"
     >
       <ul
-        className="relative grid auto-cols-fr grid-flow-col rounded-full bg-neutral-500/80 p-1 shadow-lg shadow-black/10 backdrop-blur-md"
+        className="relative grid auto-cols-fr grid-flow-col rounded-full border border-white/25 bg-neutral-800/50 p-1 shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.35)] backdrop-blur-xl backdrop-saturate-150"
       >
         {/* sliding highlight, same width as every link */}
         <span
           aria-hidden
-          className={`absolute inset-y-1 rounded-full bg-white/25 ${
+          className={`absolute inset-y-1 rounded-full border border-white/30 bg-white/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_2px_8px_rgba(0,0,0,0.15)] backdrop-blur-sm ${
             animate
               ? "transition-[left,width,opacity] duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]"
               : ""
