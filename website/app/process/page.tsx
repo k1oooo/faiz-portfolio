@@ -6,27 +6,27 @@ export const metadata: Metadata = { title: "Process" };
 const steps = [
   {
     title: "Discovery",
-    body: "We start with a call and a few questions about your business, your customers and what you want the site to achieve.",
+    body: "A quick call to discuss your goals, target audience, and any domain or hosting preferences.",
   },
   {
-    title: "Content Strategy",
-    body: "I suggest what the site should say and how the pages fit together, then we refine it as a team.",
+    title: "Content",
+    body: "We outline the site's structure and messaging to ensure it connects with your users.",
   },
   {
-    title: "Visual Direction",
-    body: "I share references and a look and feel for your brand, and we settle on a direction before any design starts.",
+    title: "Direction",
+    body: "I share moodboards and design references to lock in the perfect look for your brand.",
   },
   {
     title: "Design",
-    body: "I design the pages in Figma and share them early, so you can give feedback before anything is built.",
+    body: "I create detailed layouts in Figma and gather your feedback before writing any code.",
   },
   {
     title: "Development",
-    body: "I build the approved design in Next.js, fast and responsive on every screen, with motion that adds to the experience.",
+    body: "I build a fast, responsive Next.js application tailored to your exact approved designs.",
   },
   {
-    title: "Launch & Handover",
-    body: "We test and go live on Vercel. I hand the site over and stay around to fix things and make improvements.",
+    title: "Launch",
+    body: "I recommend or configure your preferred domain and hosting, then launch the site flawlessly.",
   },
 ];
 
@@ -48,7 +48,6 @@ export default function Process() {
         {steps.map((step, i) => (
           <li
             key={step.title}
-           
             className="grid items-start gap-x-4 gap-y-2 grid-cols-[auto_1fr] md:grid-cols-[17.4fr_42.6fr_40fr] md:gap-x-0"
           >
             <span className="text-[clamp(1.5rem,min(2.6vw,4.4svh),2.75rem)] font-semibold leading-none tracking-[-0.03em] tabular-nums">

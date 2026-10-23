@@ -1,6 +1,10 @@
 import WorkShowcase from "@/components/WorkShowcase";
 
-const lines = ["I build good looking,", "user centered websites", "that convert."];
+const lines = [
+  "I craft engaging,",
+  "digital experiences",
+  "that drive growth.",
+];
 
 export default function Home() {
   return (

@@ -11,13 +11,10 @@ export const metadata: Metadata = { title: "About" };
 export default function About() {
   return (
     <section className="flex min-h-svh flex-col gap-6 px-4 pb-6 pt-24 md:grid md:h-svh md:min-h-[34rem] md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:grid-rows-[minmax(0,1fr)] md:gap-10 md:px-5 md:pb-5">
-      <div
-       
-        className="relative min-h-40 flex-1 overflow-hidden rounded-2xl bg-surface md:min-h-0"
-      >
+      <div className="relative min-h-40 flex-1 overflow-hidden  bg-surface md:min-h-0">
         {/* Replace public/about/faiz.svg with your photo (any name, update src) */}
         <Image
-          src="/about/faiz.svg"
+          src="/about/me.jpeg"
           alt={`Photo of ${site.name}`}
           fill
           unoptimized
@@ -39,18 +36,16 @@ export default function About() {
             I&apos;m Faiz, a full stack web developer from Kuala Lumpur.
           </p>
           <p>
-            I&apos;m 22 and in my second year of a BSc in Artificial Intelligence
-            at UTMKL. I build websites that look good, are easy to use and turn
-            visitors into customers.
+            I&apos;m 22 and in my second year of a BSc in Artificial
+            Intelligence at UTMKL. I build websites that look good, are easy to
+            use and turn visitors into customers.
           </p>
           <p>
             I work with Next.js, TypeScript and Tailwind CSS, add motion with
             GSAP, design in Figma, and ship on Vercel with Supabase when a
             project needs data.
           </p>
-          <p>
-            I&apos;m also a co-founder of Vici.
-          </p>
+          <p>I&apos;m also a co-founder of Vici.</p>
         </div>
       </div>
     </section>
