@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import NavPill from "@/components/NavPill";
 import Animations from "@/components/Animations";
+import HeaderTheme from "@/components/HeaderTheme";
 
 const general = localFont({
   src: [
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <NavPill />
         <main>{children}</main>
         <Animations />
+        <HeaderTheme />
       </body>
     </html>
   );
