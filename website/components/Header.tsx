@@ -98,7 +98,7 @@ export default function Header() {
       data-header-theme={theme}
       className="fixed inset-x-0 top-0 z-50 text-(--hdr-fg) transition-colors duration-300"
     >
-      <div className="flex items-center justify-between gap-3 px-4 py-2.5 sm:px-6 sm:py-3 lg:px-10 lg:py-4">
+      <div className="flex items-center justify-between gap-3 px-4 py-2.5 sm:py-3 md:px-5 lg:py-4">
         <Link
           href="/"
           className="whitespace-nowrap text-sm font-semibold tracking-tight sm:text-[15px]"

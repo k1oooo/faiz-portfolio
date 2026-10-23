@@ -23,13 +23,13 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="px-5 pb-24 pt-28 md:px-10 md:pb-32 md:pt-36">
+    <section className="px-4 pb-24 pt-28 md:px-5 md:pb-32 md:pt-36">
       <h1 className="text-[clamp(2rem,5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-fg">
         <span className="block overflow-hidden pb-[0.08em]">
           <span data-hero-line className="block">Process</span>
         </span>
       </h1>
-      <p data-reveal className="mt-6 max-w-2xl text-lg leading-relaxed md:text-xl">
+      <p data-reveal className="mt-6 text-lg leading-relaxed md:text-xl">
         A simple way of working, from first call to launch.
       </p>
 
@@ -48,7 +48,7 @@ export default function Process() {
                 {step.title}
               </h2>
             </div>
-            <p className="max-w-3xl text-lg leading-relaxed md:pt-2 md:text-xl">
+            <p className="text-lg leading-relaxed md:pt-2 md:text-xl">
               {step.body}
             </p>
           </li>

@@ -6,10 +6,10 @@ export default function Home() {
   return (
     <>
       {/* Hero: just a headline, fills exactly one screen */}
-      <section className="relative flex h-svh min-h-[520px] items-end px-5 pb-36 md:px-10 md:pb-44">
+      <section className="relative flex h-svh min-h-[520px] items-end px-4 pb-36 md:px-5 md:pb-44">
         <h1
           data-parallax
-          className="max-w-[1600px] text-[clamp(1.75rem,8vw,7rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-fg"
+          className="text-[clamp(1.75rem,8vw,7rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-fg"
         >
           {lines.map((line) => (
             <span key={line} className="block overflow-hidden pb-[0.08em]">

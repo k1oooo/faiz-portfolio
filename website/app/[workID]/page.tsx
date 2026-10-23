@@ -26,7 +26,7 @@ export default async function WorkPage({ params }: PageProps<"/[workID]">) {
   const next = works[(index + 1) % works.length];
 
   return (
-    <article className="mx-auto max-w-[1600px] px-5 pb-24 pt-28 md:px-8 md:pt-36">
+    <article className="px-4 pb-24 pt-28 md:px-5 md:pt-36">
       <Link
         href="/#work"
         className="group inline-flex items-center gap-2 text-sm transition-colors duration-300 hover:text-fg"

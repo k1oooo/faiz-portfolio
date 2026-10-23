@@ -70,10 +70,10 @@ export default function WorkShowcase() {
         {works.map((work, i) => (
           <article
             key={work.slug}
-            className="grid gap-8 px-5 pb-14 pt-14 first:pt-28 md:h-svh md:w-screen md:grid-cols-[3fr_4fr_3fr] md:gap-0 md:p-0 md:first:pt-0"
+            className="grid gap-8 px-4 pb-14 pt-14 first:pt-28 md:h-svh md:w-screen md:grid-cols-[3fr_4fr_3fr] md:gap-0 md:p-0 md:first:pt-0"
           >
             {/* Left: title, description, timeline */}
-            <div className="order-2 flex flex-col justify-between gap-10 md:order-none md:border-r md:border-black/10 md:px-10 md:pb-12 md:pt-24">
+            <div className="order-2 flex flex-col justify-between gap-10 md:order-none md:border-r md:border-black/10 md:px-5 md:pb-12 md:pt-24">
               <div>
                 <h2 className="text-2xl font-semibold tracking-tight text-neutral-950 md:text-[30px]">
                   <Link
@@ -115,7 +115,7 @@ export default function WorkShowcase() {
             </Link>
 
             {/* Right: role, tools */}
-            <div className="order-3 flex flex-col justify-between gap-10 md:order-none md:border-l md:border-black/10 md:px-10 md:pb-12 md:pt-24">
+            <div className="order-3 flex flex-col justify-between gap-10 md:order-none md:border-l md:border-black/10 md:px-5 md:pb-12 md:pt-24">
               <div>
                 <p className={label}>Role</p>
                 <p className={`mt-3 text-[17px] ${muted}`}>{work.role}</p>
