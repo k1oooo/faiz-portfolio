@@ -60,7 +60,7 @@ export default async function WorkPage({ params }: PageProps<"/[workID]">) {
         </div>
       </header>
 
-      <div data-reveal className="relative mt-12 aspect-[16/10] overflow-hidden rounded-2xl bg-surface md:mt-20">
+      <div data-reveal data-header="light" className="relative mt-12 aspect-[16/10] overflow-hidden rounded-2xl bg-surface md:mt-20">
         <Image
           src={work.image}
           alt={`${work.title} website`}
@@ -75,6 +75,7 @@ export default async function WorkPage({ params }: PageProps<"/[workID]">) {
       <Link
         href={`/${next.slug}`}
         data-reveal
+        data-header="light"
         className="group relative mt-20 block aspect-[16/10] overflow-hidden rounded-2xl bg-surface md:mt-32"
       >
         <Image

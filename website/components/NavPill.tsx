@@ -52,7 +52,7 @@ export default function NavPill() {
   return (
     <nav
       aria-label="Main"
-      className="fixed bottom-5 left-1/2 z-[60] -translate-x-1/2 md:bottom-auto md:top-[14px]"
+      className="fixed bottom-5 left-1/2 z-[60] -translate-x-1/2 lg:bottom-auto lg:top-[14px]"
     >
       <ul
         className="relative grid auto-cols-fr grid-flow-col rounded-full bg-neutral-500/80 p-1 shadow-lg shadow-black/10 backdrop-blur-md"

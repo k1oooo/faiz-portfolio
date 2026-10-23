@@ -41,7 +41,7 @@ export default function ContactMenu() {
   return (
     <div
       ref={root}
-      className="relative ml-2"
+      className="relative ml-1 sm:ml-2"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
@@ -50,7 +50,7 @@ export default function ContactMenu() {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
-        className="inline-flex items-center gap-1 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black"
+        className="inline-flex items-center gap-1 rounded-full bg-(--hdr-fg) px-3 py-1.5 text-[13px] font-semibold text-(--hdr-inv) transition-colors duration-300 sm:px-4 sm:py-2 sm:text-sm"
       >
         Contact
         <ArrowUpRight
@@ -70,14 +70,14 @@ export default function ContactMenu() {
             : "invisible -translate-y-1 scale-95 opacity-0"
         }`}
       >
-        <ul className="overflow-hidden rounded-2xl bg-white p-1.5 text-black">
+        <ul className="overflow-hidden rounded-2xl bg-(--hdr-fg) p-1.5 text-(--hdr-inv) shadow-lg shadow-black/20 transition-colors duration-300">
           {options.map(({ label, href, icon: Icon, external }) => (
             <li key={label}>
               <a
                 role="menuitem"
                 href={href}
                 {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-                className="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition-colors duration-200 hover:bg-black/10"
+                className="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition-colors duration-200 hover:bg-[color-mix(in_srgb,var(--hdr-inv)_12%,transparent)]"
               >
                 <Icon className="size-[18px]" strokeWidth={1.75} />
                 {label}

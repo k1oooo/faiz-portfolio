@@ -21,6 +21,17 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Header colors follow whatever is behind it (set by Header.tsx).
+   dark background -> white header, any other background -> black header */
+[data-header-theme="dark"] {
+  --hdr-fg: #ffffff;
+  --hdr-inv: #0a0a0a;
+}
+[data-header-theme="light"] {
+  --hdr-fg: #0a0a0a;
+  --hdr-inv: #ffffff;
+}
+
 ::selection {
   background: var(--color-fg);
   color: var(--color-bg);
