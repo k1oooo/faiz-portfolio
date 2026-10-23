@@ -50,7 +50,7 @@ export default function ContactMenu() {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
-        className="inline-flex items-center gap-1 rounded-full bg-(--hdr-fg) px-3 py-1.5 text-[13px] font-semibold text-(--hdr-inv) transition-colors duration-300 sm:px-4 sm:py-2 sm:text-sm"
+        className="inline-flex items-center gap-1 rounded-full bg-(--hdr-fg) px-3 py-1.5 text-[13px] font-semibold text-(--hdr-inv) sm:px-4 sm:py-2 sm:text-sm"
       >
         Contact
         <ArrowUpRight
@@ -70,7 +70,7 @@ export default function ContactMenu() {
             : "invisible -translate-y-1 scale-95 opacity-0"
         }`}
       >
-        <ul className="overflow-hidden rounded-2xl bg-(--hdr-fg) p-1.5 text-(--hdr-inv) shadow-lg shadow-black/20 transition-colors duration-300">
+        <ul className="overflow-hidden rounded-2xl bg-(--hdr-fg) p-1.5 text-(--hdr-inv)">
           {options.map(({ label, href, icon: Icon, external }) => (
             <li key={label}>
               <a
