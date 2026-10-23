@@ -32,13 +32,6 @@ body {
   --hdr-inv: #ffffff;
 }
 
-/* The site header never blends with what is behind it (that washes out over
-   images). Its color comes from the theme above, set by HeaderTheme.tsx. */
-body > header {
-  mix-blend-mode: normal !important;
-  color: var(--hdr-fg, #ffffff) !important;
-}
-
 ::selection {
   background: var(--color-fg);
   color: var(--color-bg);
