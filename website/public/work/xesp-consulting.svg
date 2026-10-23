@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1400" preserveAspectRatio="xMidYMid slice">
+<defs><filter id="b"><feGaussianBlur stdDeviation="120"/></filter></defs>
+<rect width="1080" height="1400" fill="#27272a"/>
+<g filter="url(#b)"><circle cx="150" cy="150" r="380" fill="#71717a"/><circle cx="950" cy="1150" r="420" fill="#d4d4d8"/><circle cx="900" cy="250" r="260" fill="#d4d4d8" opacity=".6"/></g>
+<text x="540" y="720" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="150" font-weight="700" fill="#fff" letter-spacing="-5">XESP</text>
+<text x="540" y="800" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="40" fill="#fff" opacity=".8">Replace with project image</text>
+</svg>

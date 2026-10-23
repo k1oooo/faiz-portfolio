@@ -1,2 +1,33 @@
-/* app/globals.css */
 @import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-general), ui-sans-serif, system-ui, sans-serif;
+  --color-bg: #0a0a0a;
+  --color-surface: #121212;
+  --color-fg: #f5f5f5;
+  --color-body: #8f8f8f;
+}
+
+html {
+  background: var(--color-bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  /* all body text is gray; headings opt in to white with text-fg */
+  color: var(--color-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-fg);
+  color: var(--color-bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
