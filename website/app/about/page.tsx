@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "About" };
 
 export default function About() {
   return (
-    <section className="mx-auto grid max-w-[1600px] gap-12 px-5 pb-24 pt-28 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-20 md:px-8 md:pb-32 md:pt-36">
+    <section className="grid gap-12 px-5 pb-24 pt-28 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-20 md:px-10 md:pb-32 md:pt-36">
       <div data-reveal className="md:sticky md:top-32 md:self-start">
         <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface">
           {/* Replace public/about/faiz.svg with your photo (any name, update src) */}
@@ -29,7 +29,7 @@ export default function About() {
           </span>
         </h1>
 
-        <div className="mt-8 max-w-2xl space-y-6 text-lg leading-relaxed md:mt-12 md:text-xl">
+        <div className="mt-8 max-w-3xl space-y-6 text-lg leading-relaxed md:mt-12 md:text-xl">
           <p data-reveal className="text-fg">
             I&apos;m Faiz, a full stack web developer from Kuala Lumpur.
           </p>
