@@ -40,7 +40,7 @@ export default function Process() {
     <section className="px-4 pb-10 pt-28 md:px-5 md:pb-12 md:pt-32">
       <h1 className="text-[clamp(2rem,5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-fg">
         <span className="block overflow-hidden pb-[0.08em]">
-          <span data-hero-line className="block">Process</span>
+          <span className="block">Process</span>
         </span>
       </h1>
 
@@ -48,7 +48,7 @@ export default function Process() {
         {steps.map((step, i) => (
           <li
             key={step.title}
-            data-reveal
+           
             className="grid items-start gap-x-4 gap-y-2 grid-cols-[auto_1fr] md:grid-cols-[17.4fr_42.6fr_40fr] md:gap-x-0"
           >
             <span className="text-[clamp(1.5rem,2.6vw,2.75rem)] font-semibold leading-none tracking-[-0.03em] tabular-nums">
