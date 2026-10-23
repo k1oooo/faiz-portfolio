@@ -4,32 +4,37 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "About" };
 
+/**
+ * Fits exactly one screen: the photo takes whatever height is left and the
+ * text scales with the screen height, so the page never overflows.
+ */
 export default function About() {
   return (
-    <section className="grid gap-12 px-4 pb-24 pt-28 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-20 md:px-5 md:pb-32 md:pt-36">
-      <div data-reveal className="md:sticky md:top-32 md:self-start">
-        <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface">
-          {/* Replace public/about/faiz.svg with your photo (any name, update src) */}
-          <Image
-            src="/about/faiz.svg"
-            alt={`Photo of ${site.name}`}
-            fill
-            unoptimized
-            priority
-            sizes="(min-width: 768px) 40vw, 100vw"
-            className="object-cover"
-          />
-        </div>
+    <section className="flex min-h-svh flex-col gap-6 px-4 pb-6 pt-24 md:grid md:h-svh md:min-h-[34rem] md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:grid-rows-[minmax(0,1fr)] md:gap-10 md:px-5 md:pb-5">
+      <div
+        data-reveal
+        className="relative min-h-40 flex-1 overflow-hidden rounded-2xl bg-surface md:min-h-0"
+      >
+        {/* Replace public/about/faiz.svg with your photo (any name, update src) */}
+        <Image
+          src="/about/faiz.svg"
+          alt={`Photo of ${site.name}`}
+          fill
+          unoptimized
+          priority
+          sizes="(min-width: 768px) 40vw, 100vw"
+          className="object-cover"
+        />
       </div>
 
-      <div>
+      <div className="flex shrink-0 flex-col gap-6 md:min-h-0 md:justify-between md:gap-0">
         <h1 className="text-[clamp(2rem,5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-fg">
           <span className="block overflow-hidden pb-[0.08em]">
             <span data-hero-line className="block">About</span>
           </span>
         </h1>
 
-        <div className="mt-8 space-y-6 text-lg leading-relaxed md:mt-12 md:text-xl">
+        <div className="space-y-3 text-base leading-relaxed md:space-y-[2svh] md:text-[clamp(1rem,2.4svh,1.375rem)]">
           <p data-reveal className="text-fg">
             I&apos;m Faiz, a full stack web developer from Kuala Lumpur.
           </p>
