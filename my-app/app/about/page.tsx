@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { site } from "@/data/site";
 
 export const metadata = { title: "About | Faiz" };
@@ -12,8 +13,15 @@ export default function About() {
           <span aria-hidden className="ml-[0.03em] inline-block h-[0.1em] w-[0.1em] bg-accent" />
           <span className="sr-only">.</span>
         </h1>
-        <div className="flex aspect-[3/4] w-full items-center justify-center bg-charcoal text-[13px] tracking-widest text-mid md:col-span-3 md:col-start-10 md:row-span-2 md:row-start-1 md:self-start">
-          PHOTO
+        <div className="relative aspect-[3/4] w-full overflow-hidden bg-charcoal md:col-span-3 md:col-start-10 md:row-span-2 md:row-start-1 md:self-start">
+          <Image
+            src="/images/me.jpeg"
+            alt="Portrait of Faiz Fahmi"
+            fill
+            priority
+            sizes="(min-width: 768px) 25vw, 100vw"
+            className="object-cover object-[50%_40%]"
+          />
         </div>
         <p className="lead md:col-span-6 md:row-start-2 md:self-end">{site.bio}</p>
       </section>

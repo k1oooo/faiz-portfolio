@@ -35,6 +35,17 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
         <p className="lead">{p.summary}</p>
         <p className="lead">{p.details}</p>
       </div>
+
+      {p.url && (
+        <a
+          href={p.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="label mt-12 inline-block underline underline-offset-4 transition-colors hover:text-accent"
+        >
+          VISIT WEBSITE ↗
+        </a>
+      )}
     </main>
   );
 }

@@ -14,7 +14,7 @@ export const site = {
     }, // TODO
     { label: "Resume", href: "#" }, // TODO
   ],
-  bio: "I'm a 22-year-old AI student and freelance web designer from Kuala Lumpur, who builds websites and tools where design and code work as one. I run Kio Web, helping local cafes and small businesses get online.",
+  bio: "I'm Faiz, a web developer and designer from Kuala Lumpur, and an AI and machine learning student at UTM. I co-founded Vici Software Development, where we build web apps and corporate websites for growing businesses, and I take on freelance projects where design and code work as one.",
   contactLine:
     "If you have a project in mind, feel free to reach out — I'd be glad to help bring your vision to life.",
   stack: [
