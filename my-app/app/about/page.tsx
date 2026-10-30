@@ -32,7 +32,7 @@ export default function About() {
             <div
               key={s}
               className={`flex aspect-[4/3] items-center justify-center text-[clamp(1.4rem,2.6vw,2.6rem)] tracking-tight ${
-                i === 0 ? "bg-ink text-paper" : ""
+                i === 0 ? "bg-accent text-ink" : ""
               }`}
             >
               {s}

@@ -29,6 +29,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* The one accent colour also shows up when selecting text */
+::selection {
+  background: var(--color-accent);
+  color: #0a0a0a;
+}
+
 body {
   background: var(--bg);
   color: var(--fg);

@@ -11,7 +11,7 @@ export default function Contacts() {
         <div>
           <a
             href={`mailto:${site.email}`}
-            className="block break-all text-[clamp(1.8rem,4.6vw,4.6rem)] leading-[0.95] tracking-tight"
+            className="block break-all text-[clamp(1.8rem,4.6vw,4.6rem)] leading-[0.95] tracking-tight transition-colors hover:text-accent"
           >
             {site.email}
           </a>
@@ -19,7 +19,7 @@ export default function Contacts() {
             {site.links.map((l, i) => (
               <span key={l.label} className="flex gap-4">
                 {i > 0 && <span aria-hidden>|</span>}
-                <a href={l.href} className="transition-colors hover:text-paper">
+                <a href={l.href} className="transition-colors hover:text-accent">
                   {l.label}
                 </a>
               </span>

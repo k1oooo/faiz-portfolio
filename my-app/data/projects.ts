@@ -1,5 +1,7 @@
 export type Project = {
   slug: string;
+  name: string; // short name shown on the project card
+  type: string; // project type shown on the right of the card
   title: string;
   year: string;
   tags: string[];
@@ -12,6 +14,8 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "vici-corporate-website",
+    name: "Vici",
+    type: "Corporate Website",
     title: "Vici Corporate Website",
     year: "2026",
     tags: ["CORPORATE WEBSITE", "NEXT.JS", "TAILWIND"],
@@ -23,6 +27,8 @@ export const projects: Project[] = [
   },
   {
     slug: "xesp-consulting-corporate-website",
+    name: "XESP Consulting",
+    type: "Corporate Website",
     title: "XESP Consulting Corporate Website",
     year: "2026",
     tags: ["CORPORATE WEBSITE", "NEXT.JS", "GSAP"],

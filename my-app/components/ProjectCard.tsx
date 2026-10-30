@@ -8,12 +8,10 @@ export default function ProjectCard({ p }: { p: Project }) {
         IMAGE PLACEHOLDER
       </div>
       <div className="mt-8 flex items-end justify-between gap-6 pb-4">
-        <h3 className="text-[clamp(1.6rem,3vw,2.6rem)] leading-none tracking-tight">{p.title}</h3>
-        <ul className="text-right text-[14px] leading-snug text-mist/70">
-          {p.tags.map((t) => (
-            <li key={t}>{t}</li>
-          ))}
-        </ul>
+        <h3 className="text-[clamp(1.6rem,3vw,2.6rem)] leading-none tracking-tight transition-colors group-hover:text-accent">
+          {p.name}
+        </h3>
+        <p className="text-right text-[14px] uppercase leading-none text-accent">{p.type}</p>
       </div>
     </Link>
   );

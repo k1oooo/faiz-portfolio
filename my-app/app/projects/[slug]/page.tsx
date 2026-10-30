@@ -41,7 +41,7 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
           href={p.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="label mt-12 inline-block underline underline-offset-4 transition-colors hover:text-accent"
+          className="mt-12 inline-block text-[15px] text-accent underline underline-offset-4 transition-opacity hover:opacity-70"
         >
           VISIT WEBSITE ↗
         </a>
