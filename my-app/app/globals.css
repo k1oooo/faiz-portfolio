@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: #0a0a0a;
+  --color-charcoal: #262626;
+  --color-mid: #737373;
+  --color-mist: #e5e5e5;
+  --color-paper: #f7f7f7;
+  --color-accent: #ff4d00;
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --font-sans: var(--font-sans-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --bg: #f7f7f7;
+  --fg: #0a0a0a;
+  --grid: rgba(10, 10, 10, 0.08);
+}
+
+/* Pages that contain .theme-dark (e.g. Contacts) invert the whole page */
+body:has(.theme-dark) {
+  --bg: #0a0a0a;
+  --fg: #f7f7f7;
+  --grid: rgba(247, 247, 247, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans-display), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* Faint vertical column grid behind every page (12 cols, 20px gutters) */
+.grid-lines {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 20px;
+  padding: 0 20px;
+}
+.grid-lines > div {
+  border-left: 1px solid var(--grid);
+  border-right: 1px solid var(--grid);
+}
+
+.mega {
+  font-size: clamp(4.5rem, 14vw, 17rem);
+  line-height: 0.82;
+  letter-spacing: -0.065em;
+  font-weight: 500;
+}
+
+.lead {
+  font-size: clamp(1.5rem, 2.1vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.label {
+  font-size: 15px;
+  color: var(--color-mid);
 }
