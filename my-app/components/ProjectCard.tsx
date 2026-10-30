@@ -11,7 +11,9 @@ export default function ProjectCard({ p }: { p: Project }) {
         <h3 className="text-[clamp(1.6rem,3vw,2.6rem)] leading-none tracking-tight transition-colors group-hover:text-accent">
           {p.name}
         </h3>
-        <p className="text-right text-[14px] uppercase leading-none text-accent">{p.type}</p>
+        <p className="text-right text-[14px] uppercase leading-none text-mist/70 transition-colors group-hover:text-accent">
+          {p.type}
+        </p>
       </div>
     </Link>
   );
