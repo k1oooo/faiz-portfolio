@@ -8,6 +8,10 @@ export type Project = {
   summary: string;
   details: string;
   url?: string;
+  // Screen recording of the site, shown on the card and as the hero on the project page.
+  // Put the file in public/videos/ and set e.g. video: "/videos/vici.mp4" (poster is optional).
+  video?: string;
+  poster?: string;
 };
 
 // Placeholder image blocks on the project pages are still empty; add screenshots when ready.
@@ -24,6 +28,7 @@ export const projects: Project[] = [
     details:
       "The site introduces who Vici is, what we build and how to work with us, so prospects can understand the company and get in touch quickly. I designed and built it end to end, keeping the layout clean and fast so the company comes across as credible from the first visit.",
     url: "https://vici-co.tech",
+    video: "/videos/vici-vid.mp4",
   },
   {
     slug: "xesp-consulting-corporate-website",
@@ -37,7 +42,9 @@ export const projects: Project[] = [
     details:
       "I first built the original site as an intern at XESP, then rebuilt every page on Next.js with a refreshed navbar, footer and homepage. Page copy and configuration now live in dedicated data files so content updates stay simple, framer-motion was replaced with GSAP animations, and the palette follows a 60/30/10 colour rule with a single accent.",
     url: "https://www.xespconsulting.com",
+    video: "/videos/xesp.mp4",
   },
 ];
 
-export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
+export const getProject = (slug: string) =>
+  projects.find((p) => p.slug === slug);

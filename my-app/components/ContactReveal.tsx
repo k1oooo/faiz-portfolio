@@ -7,6 +7,10 @@ import ContactPanel from "./ContactPanel";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Blank breathing room (in svh) after the last section before the panel starts to slide up.
+// The spacer is this plus one full screen: the screen is the slide-up itself.
+const PAUSE = 30;
+
 /**
  * Once the visitor scrolls to the end of any page, the page stays fixed on screen
  * and the contact page slides up from the bottom over it. A blank spacer of one
@@ -34,7 +38,14 @@ export default function ContactReveal() {
     };
     setOpen(false);
 
-    const trigger = { trigger: spacer, start: "top bottom", end: "bottom bottom" };
+    // The first PAUSE of the spacer just scrolls by as empty space; the slide-up uses the rest.
+    const pause = () =>
+      Math.round((spacer.offsetHeight * PAUSE) / (100 + PAUSE));
+    const trigger = {
+      trigger: spacer,
+      start: () => `top+=${pause()} bottom`,
+      end: "bottom bottom",
+    };
     const mm = gsap.matchMedia();
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
@@ -53,7 +64,7 @@ export default function ContactReveal() {
           },
         })
         .fromTo(panel, { yPercent: 100 }, { yPercent: 0 }, 0)
-        .fromTo(page, { y: 0 }, { y: () => spacer.offsetHeight }, 0);
+        .fromTo(page, { y: 0 }, { y: () => spacer.offsetHeight - pause() }, 0);
     });
 
     // Reduced motion: no sliding, the panel simply appears near the bottom.
@@ -89,7 +100,11 @@ export default function ContactReveal() {
 
   return (
     <>
-      <div ref={spacerRef} aria-hidden style={{ height: "100svh" }} />
+      <div
+        ref={spacerRef}
+        aria-hidden
+        style={{ height: `${100 + PAUSE}svh` }}
+      />
       <section
         ref={panelRef}
         aria-label="Contact"

@@ -35,7 +35,9 @@ body {
   color: var(--fg);
   font-family: var(--font-sans-display), system-ui, sans-serif;
   letter-spacing: -0.02em;
-  transition: background 0.4s, color 0.4s;
+  transition:
+    background 0.4s,
+    color 0.4s;
 }
 
 /* Faint vertical column grid behind every page (12 cols, 20px gutters) */
@@ -52,6 +54,16 @@ body {
 .grid-lines > div {
   border-left: 1px solid var(--grid);
   border-right: 1px solid var(--grid);
+}
+
+/* Mobile: 4 columns instead of 12 */
+@media (max-width: 767px) {
+  .grid-lines {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .grid-lines > div:nth-child(n + 5) {
+    display: none;
+  }
 }
 
 /* The slide-up contact panel is always dark, whatever the page theme is */
@@ -88,8 +100,12 @@ a:focus-visible .sig-trace {
   animation: sig-trace 1.8s ease-in-out forwards;
 }
 @keyframes sig-trace {
-  from { stroke-dashoffset: 1; }
-  to { stroke-dashoffset: 0; }
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   a:hover .sig-trace,

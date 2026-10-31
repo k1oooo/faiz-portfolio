@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { stackIcons } from "@/data/stack-icons";
 
-// The first tiles are large (one row of three), the rest are small (one row of seven).
+// Desktop: the first tiles are large (one row of three), the rest small (one row of seven).
+// Mobile: every tile is the same size, two per row.
 const LARGE = 3;
 
 // Wordmarks are wide and short, so they look small next to square icons; scale them up.
@@ -32,7 +33,9 @@ export default function TechStack({ items }: { items: string[] }) {
     // Measure with bounding boxes so fractional tile sizes line up exactly.
     const g = grid.getBoundingClientRect();
     const t = tile.getBoundingClientRect();
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     gsap.to(block, {
       x: t.left - g.left,
       y: t.top - g.top,
@@ -53,11 +56,57 @@ export default function TechStack({ items }: { items: string[] }) {
     return () => observer.disconnect();
   }, []);
 
+  // Mobile: there is no hover, so scrolling drives the black block from tile to tile.
+  const scrollMode = useRef(false);
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+    const mq = window.matchMedia("(max-width: 767px)");
+    const count = items.length;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      if (!scrollMode.current) return;
+      const r = grid.getBoundingClientRect();
+      // Progress of a reference line (a bit below the middle of the screen) down the grid.
+      const p = (window.innerHeight * 0.6 - r.top) / r.height;
+      const index = Math.min(count - 1, Math.max(0, Math.floor(p * count)));
+      if (index !== current.current) {
+        setHovered(index);
+        moveTo(index);
+      }
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    const onModeChange = () => {
+      scrollMode.current = mq.matches;
+      if (mq.matches) {
+        update();
+      } else {
+        setHovered(null);
+        moveTo(0, false);
+      }
+    };
+    scrollMode.current = mq.matches;
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    mq.addEventListener("change", onModeChange);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      mq.removeEventListener("change", onModeChange);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [items.length]);
+
   return (
     <ul
       ref={gridRef}
-      className="relative grid grid-cols-12 md:grid-cols-21"
+      className="relative grid grid-cols-2 md:grid-cols-21"
       onPointerLeave={() => {
+        if (scrollMode.current) return;
         setHovered(null);
         moveTo(0);
       }}
@@ -66,8 +115,7 @@ export default function TechStack({ items }: { items: string[] }) {
       <div
         ref={blockRef}
         aria-hidden
-        className="pointer-events-none absolute left-0 top-0 bg-ink"
-        style={{ width: "calc(100% / 3)", aspectRatio: "3 / 2" }}
+        className="pointer-events-none absolute left-0 top-0 aspect-square w-1/2 bg-ink md:aspect-[3/2] md:w-1/3"
       />
       {items.map((name, i) => {
         const large = i < LARGE;
@@ -78,6 +126,7 @@ export default function TechStack({ items }: { items: string[] }) {
               tiles.current[i] = el;
             }}
             onPointerEnter={() => {
+              if (scrollMode.current) return;
               setHovered(i);
               moveTo(i);
             }}
@@ -87,7 +136,10 @@ export default function TechStack({ items }: { items: string[] }) {
             className={`relative flex items-center justify-center transition-colors duration-300 ${
               active === i ? "text-paper" : "text-ink"
             } ${
-              large ? "col-span-4 aspect-[3/2] md:col-span-7" : "col-span-3 aspect-square"
+              "col-span-1 aspect-square " +
+              (large
+                ? "md:col-span-7 md:aspect-[3/2]"
+                : "md:col-span-3 md:aspect-square")
             }`}
           >
             <svg
@@ -95,11 +147,14 @@ export default function TechStack({ items }: { items: string[] }) {
               aria-label={name}
               viewBox="0 0 24 24"
               fill="currentColor"
-              style={SCALE[name] ? { transform: `scale(${SCALE[name]})` } : undefined}
+              style={
+                SCALE[name] ? { transform: `scale(${SCALE[name]})` } : undefined
+              }
               className={
-                large
-                  ? "h-[clamp(3rem,6vw,7rem)] w-[clamp(3rem,6vw,7rem)]"
-                  : "h-[clamp(2rem,4.2vw,5rem)] w-[clamp(2rem,4.2vw,5rem)]"
+                "h-14 w-14 " +
+                (large
+                  ? "md:h-[clamp(3rem,6vw,7rem)] md:w-[clamp(3rem,6vw,7rem)]"
+                  : "md:h-[clamp(2rem,4.2vw,5rem)] md:w-[clamp(2rem,4.2vw,5rem)]")
               }
             >
               <path d={stackIcons[name]} />
