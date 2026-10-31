@@ -32,6 +32,7 @@ export const projects: Project[] = [
     details:
       "The site introduces who Vici is, what we build and how to work with us, so prospects can understand the company and get in touch quickly. I designed and built it end to end, keeping the layout clean and fast so the company comes across as credible from the first visit.",
     url: "https://vici-co.tech",
+    logo: "/images/projects/vici/vici-logo-transparent.png",
     video: "/videos/vici-vid.mp4",
     poster: "/images/projects/vici/vici-hero-image.png",
   },

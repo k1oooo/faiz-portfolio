@@ -127,7 +127,7 @@ export default function ProjectPreview({
           <img
             src={logo}
             alt={`${name} logo`}
-            className="absolute inset-[14%] h-[72%] w-[72%] object-contain"
+            className="absolute inset-[8%] h-[84%] w-[84%] object-contain"
           />
         </div>
       ) : poster ? (
