@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { site } from "@/data/site";
 import TechStack from "@/components/TechStack";
+import HowIWork from "@/components/HowIWork";
 
 export const metadata = { title: "About | Faiz" };
 
@@ -26,10 +27,13 @@ export default function About() {
         </div>
         <p className="lead md:col-span-6 md:row-start-2 md:self-end">{site.bio}</p>
       </section>
-      <section className="pb-32">
+      <section className="pb-28">
         <p className="label mb-3">MY TECH STACK</p>
         <TechStack items={site.stack} />
       </section>
+      <div className="pb-32">
+        <HowIWork />
+      </div>
     </main>
   );
 }
