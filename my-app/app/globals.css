@@ -59,6 +59,11 @@ body {
   border-right: 1px solid var(--grid);
 }
 
+/* The slide-up contact panel is always dark, whatever the page theme is */
+.theme-dark-panel {
+  --grid: rgba(247, 247, 247, 0.08);
+}
+
 .mega {
   font-size: clamp(4.5rem, 14vw, 17rem);
   line-height: 0.82;

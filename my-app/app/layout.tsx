@@ -3,6 +3,7 @@ import { Inter_Tight } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Clock from "@/components/Clock";
+import ContactReveal from "@/components/ContactReveal";
 
 const sans = Inter_Tight({ variable: "--font-sans-display", subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </div>
         <Header />
         <div className="relative z-10">{children}</div>
+        <ContactReveal />
         <Clock />
       </body>
     </html>
