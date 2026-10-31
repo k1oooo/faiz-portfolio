@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Clock from "@/components/Clock";
 import ContactReveal from "@/components/ContactReveal";
+import ThemeSync from "@/components/ThemeSync";
 
 const sans = Inter_Tight({ variable: "--font-sans-display", subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <div key={i} />
           ))}
         </div>
+        <ThemeSync />
         <Header />
         <div data-page className="relative z-10">
           {children}

@@ -18,12 +18,7 @@
   --grid: rgba(10, 10, 10, 0.08);
 }
 
-/* Pages that contain .theme-dark (e.g. Contacts) invert the whole page */
-body:has(.theme-dark) {
-  --bg: #0a0a0a;
-  --fg: #f7f7f7;
-  --grid: rgba(247, 247, 247, 0.08);
-}
+/* The Contacts page inverts the whole page: see components/ThemeSync.tsx */
 
 html {
   scroll-behavior: smooth;
