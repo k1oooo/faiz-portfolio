@@ -2,6 +2,7 @@ import { site } from "@/data/site";
 
 // Shared contact content, used by the /contacts page and the slide-up panel.
 export default function ContactPanel({ heading: Heading = "h1" }: { heading?: "h1" | "p" }) {
+  const [local, domain] = site.email.split("@");
   return (
     <>
       <Heading className="mega">
@@ -14,9 +15,11 @@ export default function ContactPanel({ heading: Heading = "h1" }: { heading?: "h
         <div>
           <a
             href={`mailto:${site.email}`}
-            className="block break-all text-[clamp(1.8rem,4.6vw,4.6rem)] leading-[0.95] tracking-tight transition-colors hover:text-accent"
+            className="block text-[clamp(1.8rem,4.6vw,4.6rem)] leading-[0.95] tracking-tight [overflow-wrap:anywhere] transition-colors hover:text-accent"
           >
-            {site.email}
+            {/* Only allow a line break before the @, never in the middle of a word */}
+            {local}
+            <wbr />@{domain}
           </a>
           <div className="mt-4 flex gap-4 text-[18px] text-mid">
             {site.links.map((l, i) => (

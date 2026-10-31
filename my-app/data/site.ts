@@ -17,6 +17,7 @@ export const site = {
   bio: "I'm Faiz, a web developer and designer from Kuala Lumpur, and an AI and machine learning student at UTM. I co-founded Vici Software Development, where we build web apps and corporate websites for growing businesses, and I take on freelance projects where design and code work as one.",
   contactLine:
     "If you have a project in mind, feel free to reach out — I'd be glad to help bring your vision to life.",
+  // The first 3 show as large tiles, the rest as a row of smaller ones.
   stack: [
     "Next.js",
     "React",
@@ -26,6 +27,7 @@ export const site = {
     "Supabase",
     "Figma",
     "GSAP",
+    "Vercel",
     "GitHub",
   ],
 };
