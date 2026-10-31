@@ -31,9 +31,7 @@ export default function About() {
         <p className="label mb-3">MY TECH STACK</p>
         <TechStack items={site.stack} />
       </section>
-      <div className="pb-32">
-        <HowIWork />
-      </div>
+      <HowIWork />
     </main>
   );
 }
