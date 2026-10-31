@@ -1,4 +1,5 @@
 import { site } from "@/data/site";
+import Reveal from "@/components/Reveal";
 
 // "How I work": the steps live in data/site.ts -> process.
 // The section fills one full screen; each step stretches top to bottom with the
@@ -6,10 +7,17 @@ import { site } from "@/data/site";
 export default function HowIWork() {
   return (
     <section className="flex min-h-svh flex-col pb-24 pt-28">
-      <p className="label mb-3">HOW I WORK</p>
+      <Reveal as="p" className="label mb-3">
+        HOW I WORK
+      </Reveal>
       <ol className="grid flex-1 gap-x-5 gap-y-12 md:grid-cols-2 lg:grid-cols-4">
         {site.process.map((step, i) => (
-          <li key={step.title} className="group flex flex-col justify-between gap-16 border-t border-ink pt-4">
+          <Reveal
+            as="li"
+            key={step.title}
+            delay={(i % 4) * 0.12}
+            className="group flex flex-col justify-between gap-16 border-t border-ink pt-4"
+          >
             <span className="flex items-center gap-2 text-[15px] text-mid transition-colors group-hover:text-accent">
               <span aria-hidden className="inline-block h-2 w-2 bg-accent" />
               {String(i + 1).padStart(2, "0")}
@@ -24,7 +32,7 @@ export default function HowIWork() {
                 {step.text}
               </p>
             </div>
-          </li>
+          </Reveal>
         ))}
       </ol>
     </section>

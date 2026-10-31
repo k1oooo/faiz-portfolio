@@ -102,7 +102,7 @@ export default function ContactReveal() {
             <div key={i} />
           ))}
         </div>
-        <div className="relative z-10 flex flex-1 flex-col justify-between">
+        <div className="relative z-10 flex flex-1 flex-col">
           <ContactPanel heading="p" />
         </div>
       </section>

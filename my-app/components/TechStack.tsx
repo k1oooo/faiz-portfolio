@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { stackIcons } from "@/data/stack-icons";
 
@@ -10,14 +10,17 @@ const LARGE = 3;
 const SCALE: Record<string, number> = { GSAP: 1.5 };
 
 /**
- * Icon-only tech stack. A single accent block sits behind the icons and glides (and
+ * Icon-only tech stack. A single black block sits behind the icons and glides (and
  * resizes) to whichever tile is hovered, then returns to the first tile on leave.
+ * The hovered tile's icon turns white and a small tooltip shows its name.
  */
 export default function TechStack({ items }: { items: string[] }) {
   const gridRef = useRef<HTMLUListElement>(null);
   const blockRef = useRef<HTMLDivElement>(null);
   const tiles = useRef<(HTMLLIElement | null)[]>([]);
   const current = useRef(0);
+  const [active, setActive] = useState(0); // tile the black block is on
+  const [hovered, setHovered] = useState<number | null>(null); // tile showing a tooltip
 
   const moveTo = (index: number, animate = true) => {
     const grid = gridRef.current;
@@ -25,6 +28,7 @@ export default function TechStack({ items }: { items: string[] }) {
     const block = blockRef.current;
     if (!grid || !tile || !block) return;
     current.current = index;
+    setActive(index);
     // Measure with bounding boxes so fractional tile sizes line up exactly.
     const g = grid.getBoundingClientRect();
     const t = tile.getBoundingClientRect();
@@ -53,13 +57,16 @@ export default function TechStack({ items }: { items: string[] }) {
     <ul
       ref={gridRef}
       className="relative grid grid-cols-12 md:grid-cols-21"
-      onPointerLeave={() => moveTo(0)}
+      onPointerLeave={() => {
+        setHovered(null);
+        moveTo(0);
+      }}
     >
-      {/* Accent block: starts on the first (large) tile, which is a third of the width at 3:2 */}
+      {/* Black block: starts on the first (large) tile, which is a third of the width at 3:2 */}
       <div
         ref={blockRef}
         aria-hidden
-        className="pointer-events-none absolute left-0 top-0 bg-accent"
+        className="pointer-events-none absolute left-0 top-0 bg-ink"
         style={{ width: "calc(100% / 3)", aspectRatio: "3 / 2" }}
       />
       {items.map((name, i) => {
@@ -70,8 +77,16 @@ export default function TechStack({ items }: { items: string[] }) {
             ref={(el) => {
               tiles.current[i] = el;
             }}
-            onPointerEnter={() => moveTo(i)}
-            className={`relative flex items-center justify-center text-ink ${
+            onPointerEnter={() => {
+              setHovered(i);
+              moveTo(i);
+            }}
+            data-cursor
+            onFocus={() => setHovered(i)}
+            onBlur={() => setHovered(null)}
+            className={`relative flex items-center justify-center transition-colors duration-300 ${
+              active === i ? "text-paper" : "text-ink"
+            } ${
               large ? "col-span-4 aspect-[3/2] md:col-span-7" : "col-span-3 aspect-square"
             }`}
           >
@@ -87,9 +102,17 @@ export default function TechStack({ items }: { items: string[] }) {
                   : "h-[clamp(2rem,4.2vw,5rem)] w-[clamp(2rem,4.2vw,5rem)]"
               }
             >
-              <title>{name}</title>
               <path d={stackIcons[name]} />
             </svg>
+            <span
+              role="tooltip"
+              aria-hidden={hovered !== i}
+              className={`pointer-events-none absolute left-1/2 top-2 z-10 -translate-x-1/2 whitespace-nowrap rounded-sm bg-accent px-2 py-1 text-[13px] font-medium leading-none text-ink transition-opacity duration-200 ${
+                hovered === i ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              {name}
+            </span>
           </li>
         );
       })}

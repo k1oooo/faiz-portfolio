@@ -76,3 +76,32 @@ body {
   font-size: 15px;
   color: var(--color-mid);
 }
+
+/* Header signature: a bright line traces the outline while the logo is hovered.
+   pathLength is 1, so a dash of 1 followed by a gap of 2 hides or shows the whole path. */
+.sig-trace {
+  stroke-dasharray: 1 2;
+  stroke-dashoffset: 1;
+}
+a:hover .sig-trace,
+a:focus-visible .sig-trace {
+  animation: sig-trace 1.8s ease-in-out forwards;
+}
+@keyframes sig-trace {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  a:hover .sig-trace,
+  a:focus-visible .sig-trace {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Custom cursor (see components/CustomCursor.tsx): hide the system cursor everywhere
+   once the circle is running, including over links and buttons. */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}

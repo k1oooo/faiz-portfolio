@@ -6,6 +6,7 @@ export const site = {
   timeZone: "Asia/Kuala_Lumpur",
   coords: `03° 08' 24.00" N - 101° 41' 12.00" E`,
   email: "a.faizfahmi04@gmail.com", // TODO: replace with your real email
+  phone: "+60 16-390 3439",
   links: [
     { label: "GitHub", href: "https://github.com/k1oooo" },
     {
@@ -14,9 +15,9 @@ export const site = {
     }, // TODO
     { label: "Resume", href: "#" }, // TODO
   ],
-  bio: "I'm Faiz, a web developer and designer from Kuala Lumpur, and an AI and machine learning student at UTM. I co-founded Vici Software Development, where we build web apps and corporate websites for growing businesses, and I take on freelance projects where design and code work as one.",
+  bio: "I'm Faiz, a web developer and designer based in Kuala Lumpur, currently pursuing a Bachelor of Artificial Intelligence with Honours at Universiti Teknologi Malaysia (UTM), Kuala Lumpur. I co-founded Vici Software Development, where we build web apps and corporate websites for growing businesses. I also take on freelance projects, where design and code come together.",
   contactLine:
-    "If you have a project in mind, feel free to reach out — I'd be glad to help bring your vision to life.",
+    "Have a project in mind, or just want to say hi? Send me an email or give me a call, and let's talk through your idea.",
   // The "How I work" section on the About page.
   process: [
     {

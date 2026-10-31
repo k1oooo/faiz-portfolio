@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { site } from "@/data/site";
+import { signature } from "@/data/signature";
 
 const nav = [
   { label: "PROJECTS", href: "/" },
@@ -15,9 +16,32 @@ export default function Header() {
     href === "/" ? pathname === "/" || pathname.startsWith("/projects") : pathname.startsWith(href);
   return (
     <header className="fixed inset-x-0 top-0 z-50 flex items-start justify-between px-5 pt-4 text-white mix-blend-difference">
-      <Link href="/" className="leading-none">
-        <div className="text-[22px] font-bold tracking-tight">{site.name}</div>
-        <div className="mt-1 text-[15px] opacity-70">{site.tagline}</div>
+      <Link href="/" aria-label={`${site.name}, home`} className="group block leading-none">
+        {/* My real signature as a hollow outline. On hover a line draws itself around it. */}
+        <svg
+          viewBox={`0 0 ${signature.width} ${signature.height}`}
+          fill="none"
+          stroke="currentColor"
+          strokeLinejoin="round"
+          aria-hidden
+          className="h-10 w-auto md:h-20"
+        >
+          {/* Resting outline, always visible but quiet */}
+          {signature.paths.map((d, i) => (
+            <path key={`base-${i}`} d={d} strokeWidth={1.2} opacity={0.4} vectorEffect="non-scaling-stroke" />
+          ))}
+          {/* Bright line that traces the same outline on hover */}
+          {signature.paths.map((d, i) => (
+            <path
+              key={`draw-${i}`}
+              d={d}
+              pathLength={1}
+              strokeWidth={1.5}
+              vectorEffect="non-scaling-stroke"
+              className="sig-trace"
+            />
+          ))}
+        </svg>
       </Link>
       <nav className="flex gap-5 text-[15px]">
         {nav.map((n) => (
