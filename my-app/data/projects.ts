@@ -48,7 +48,9 @@ export const projects: Project[] = [
     details:
       "I first built the original site as an intern at XESP, then rebuilt every page on Next.js with a refreshed navbar, footer and homepage. Page copy and configuration now live in dedicated data files so content updates stay simple, framer-motion was replaced with GSAP animations, and the palette follows a 60/30/10 colour rule with a single accent.",
     url: "https://www.xespconsulting.com",
-    video: "/videos/xesp.mp4",
+    logo: "/images/projects/xespc/xespc-logo-transparent.png",
+    video: "/videos/xespc-vid.mp4",
+    poster: "/images/projects/xespc/xespc-poster.jpg",
   },
 ];
 
