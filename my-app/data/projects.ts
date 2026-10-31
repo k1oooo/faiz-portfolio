@@ -12,8 +12,8 @@ export type Project = {
   // Put the file in public/videos/ and set e.g. video: "/videos/vici.mp4" (poster is optional).
   video?: string;
   poster?: string;
-  // The client's logo, shown on the project card instead of the video preview.
-  // Put the file in public/images/projects/<client>/ and set e.g.
+  // The client's logo, shown on the project card. On hover the video (above) fades in and
+  // slowly follows the cursor. Put the file in public/images/projects/<client>/ and set e.g.
   // logo: "/images/projects/vici/logo.svg" (SVG or PNG with a transparent background works best).
   logo?: string;
 };
