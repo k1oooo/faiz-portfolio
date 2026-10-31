@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { site } from "@/data/site";
+import TechStack from "@/components/TechStack";
 
 export const metadata = { title: "About | Faiz" };
 
@@ -27,18 +28,7 @@ export default function About() {
       </section>
       <section className="pb-32">
         <p className="label mb-3">MY TECH STACK</p>
-        <div className="grid grid-cols-2 md:grid-cols-4">
-          {site.stack.map((s, i) => (
-            <div
-              key={s}
-              className={`flex aspect-[4/3] items-center justify-center text-[clamp(1.4rem,2.6vw,2.6rem)] tracking-tight ${
-                i === 0 ? "bg-accent text-ink" : ""
-              }`}
-            >
-              {s}
-            </div>
-          ))}
-        </div>
+        <TechStack items={site.stack} />
       </section>
     </main>
   );
