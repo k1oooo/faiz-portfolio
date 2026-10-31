@@ -8,7 +8,17 @@ export default function ProjectCard({ p }: { p: Project }) {
       href={`/projects/${p.slug}`}
       className="group block bg-charcoal p-5 text-paper"
     >
-      {p.video ? (
+      {p.logo ? (
+        // The client's logo, centred on a light tile (set `logo` in data/projects.ts).
+        <div className="relative aspect-[4/3] w-full bg-paper">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={p.logo}
+            alt={`${p.name} logo`}
+            className="absolute inset-[14%] h-[72%] w-[72%] object-contain"
+          />
+        </div>
+      ) : p.video ? (
         <VideoFrame
           src={p.video}
           poster={p.poster}
@@ -21,10 +31,10 @@ export default function ProjectCard({ p }: { p: Project }) {
         </div>
       )}
       <div className="mt-8 flex items-end justify-between gap-6 pb-4">
-        <h3 className="text-[clamp(1.6rem,3vw,2.6rem)] leading-none tracking-tight transition-colors group-hover:text-accent">
+        <h3 className="text-[clamp(1.6rem,3vw,2.6rem)] leading-none tracking-tight">
           {p.name}
         </h3>
-        <p className="text-right text-[14px] uppercase leading-none text-mist/70 transition-colors group-hover:text-accent">
+        <p className="text-right text-[14px] uppercase leading-none text-mist/70">
           {p.type}
         </p>
       </div>

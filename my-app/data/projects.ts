@@ -12,6 +12,10 @@ export type Project = {
   // Put the file in public/videos/ and set e.g. video: "/videos/vici.mp4" (poster is optional).
   video?: string;
   poster?: string;
+  // The client's logo, shown on the project card instead of the video preview.
+  // Put the file in public/images/projects/<client>/ and set e.g.
+  // logo: "/images/projects/vici/logo.svg" (SVG or PNG with a transparent background works best).
+  logo?: string;
 };
 
 // Placeholder image blocks on the project pages are still empty; add screenshots when ready.
