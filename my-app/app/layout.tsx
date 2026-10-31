@@ -22,7 +22,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           ))}
         </div>
         <Header />
-        <div className="relative z-10">{children}</div>
+        <div data-page className="relative z-10">
+          {children}
+        </div>
         <ContactReveal />
         <Clock />
       </body>

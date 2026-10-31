@@ -8,10 +8,10 @@ import ContactPanel from "./ContactPanel";
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * Once the visitor scrolls to the end of any page, the contact page slides up
- * from the bottom and covers the screen. A blank spacer of one viewport height
- * sits at the end of the page; scrolling through it drives the panel with
- * GSAP ScrollTrigger (scrubbed, so it follows the scroll position).
+ * Once the visitor scrolls to the end of any page, the page stays fixed on screen
+ * and the contact page slides up from the bottom over it. A blank spacer of one
+ * viewport height sits at the end of the page; scrolling through it drives the
+ * panel (and the counter-movement of the page) with GSAP ScrollTrigger.
  */
 export default function ContactReveal() {
   const pathname = usePathname();
@@ -22,12 +22,15 @@ export default function ContactReveal() {
   useEffect(() => {
     const spacer = spacerRef.current;
     const panel = panelRef.current;
-    if (!enabled || !spacer || !panel) return;
+    const page = document.querySelector<HTMLElement>("[data-page]");
+    if (!enabled || !spacer || !panel || !page) return;
 
-    // Only let the panel take clicks and focus once it is (almost) fully in view.
+    // Only let the panel take clicks and focus once it is (almost) fully in view,
+    // and take the page behind it out of the tab order at the same time.
     const setOpen = (open: boolean) => {
       panel.inert = !open;
       panel.style.pointerEvents = open ? "auto" : "none";
+      page.inert = open;
     };
     setOpen(false);
 
@@ -35,16 +38,22 @@ export default function ContactReveal() {
     const mm = gsap.matchMedia();
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
-      gsap.set(panel, { yPercent: 100, visibility: "visible" });
-      gsap.to(panel, {
-        yPercent: 0,
-        ease: "none",
-        scrollTrigger: {
-          ...trigger,
-          scrub: 0.6,
-          onUpdate: (self) => setOpen(self.progress > 0.97),
-        },
-      });
+      gsap.set(panel, { visibility: "visible" });
+      // While the visitor scrolls through the spacer, the page is pushed down by the
+      // same distance, so it stays put on screen and the panel slides up over it.
+      // Scrub is exact (no smoothing) so the page never drifts against the scroll.
+      gsap
+        .timeline({
+          defaults: { ease: "none" },
+          scrollTrigger: {
+            ...trigger,
+            scrub: true,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => setOpen(self.progress > 0.97),
+          },
+        })
+        .fromTo(panel, { yPercent: 100 }, { yPercent: 0 }, 0)
+        .fromTo(page, { y: 0 }, { y: () => spacer.offsetHeight }, 0);
     });
 
     // Reduced motion: no sliding, the panel simply appears near the bottom.
@@ -72,6 +81,7 @@ export default function ContactReveal() {
       cancelAnimationFrame(frame);
       observer.disconnect();
       mm.revert();
+      page.inert = false;
     };
   }, [enabled, pathname]);
 
