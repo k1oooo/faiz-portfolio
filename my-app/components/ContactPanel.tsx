@@ -1,37 +1,52 @@
 import { site } from "@/data/site";
 
 // Shared contact content, used by the /contacts page and the slide-up panel.
+// Layout: small "Say Hello" label, the email as a giant headline, then the intro
+// on the left and the links on the right. The parent decides the height and padding.
 export default function ContactPanel({ heading: Heading = "h1" }: { heading?: "h1" | "p" }) {
   const [local, domain] = site.email.split("@");
   return (
     <>
-      <Heading className="mega">
-        Say Hello
-        <span aria-hidden className="ml-[0.03em] inline-block h-[0.1em] w-[0.1em] bg-accent" />
-        <span className="sr-only">.</span>
-      </Heading>
-      <div className="grid items-end gap-10 md:grid-cols-2">
-        <p className="lead max-w-xl">{site.contactLine}</p>
-        <div>
-          <a
-            href={`mailto:${site.email}`}
-            className="block text-[clamp(1.8rem,4.6vw,4.6rem)] leading-[0.95] tracking-tight [overflow-wrap:anywhere] transition-colors hover:text-accent"
-          >
-            {/* Only allow a line break before the @, never in the middle of a word */}
-            {local}
-            <wbr />@{domain}
-          </a>
-          <div className="mt-4 flex gap-4 text-[18px] text-mid">
-            {site.links.map((l, i) => (
-              <span key={l.label} className="flex gap-4">
-                {i > 0 && <span aria-hidden>|</span>}
-                <a href={l.href} className="transition-colors hover:text-accent">
+      <div>
+        <Heading className="flex items-center gap-2 text-[15px] uppercase tracking-normal">
+          <span aria-hidden className="inline-block h-2 w-2 bg-accent" />
+          Say Hello
+        </Heading>
+        <a
+          href={`mailto:${site.email}`}
+          aria-label={site.email}
+          className="mt-6 block text-[clamp(2.6rem,min(11vw,22svh),14rem)] font-medium leading-[0.85] tracking-[-0.065em] [overflow-wrap:anywhere] transition-colors hover:text-accent"
+        >
+          {/* Two fixed lines: name, then @domain */}
+          <span className="block">{local}</span>
+          <span className="block">@{domain}</span>
+        </a>
+      </div>
+
+      <div className="grid items-end gap-10 md:grid-cols-12">
+        <p className="lead max-w-xl md:col-span-6">{site.contactLine}</p>
+        <ul className="text-[clamp(1.5rem,2.1vw,2.6rem)] leading-[1.15] tracking-[-0.04em] md:col-span-3 md:col-start-10">
+          {site.links.map((l) => {
+            const external = l.href.startsWith("http");
+            return (
+              <li key={l.label}>
+                <a
+                  href={l.href}
+                  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="group flex items-center justify-between gap-4 transition-colors hover:text-accent"
+                >
                   {l.label}
+                  <span
+                    aria-hidden
+                    className="text-[0.7em] opacity-60 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100"
+                  >
+                    ↗
+                  </span>
                 </a>
-              </span>
-            ))}
-          </div>
-        </div>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </>
   );
