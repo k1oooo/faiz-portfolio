@@ -1,0 +1,117 @@
+From 1fa0fea134397a2afe7291b48a4889bd621f0c20 Mon Sep 17 00:00:00 2001
+From: k1oooo <a.faizfahmi04@gmail.com>
+Date: Sun, 1 Nov 2026 07:32:44 +0000
+Subject: [PATCH] Show XESP screenshots in the project image slots
+
+---
+ my-app/app/projects/[slug]/page.tsx           |  36 +++++++++++++-----
+ my-app/data/projects.ts                       |  17 +++++++++
+ ...hone 16 Pro Max).png => xespc-contact.png} | Bin
+ ...one 16 Pro Max).png => xespc-projects.png} | Bin
+ ...one 16 Pro Max).png => xespc-services.png} | Bin
+ 5 files changed, 44 insertions(+), 9 deletions(-)
+ rename my-app/public/images/projects/xespc/{www.xespconsulting.com_contact-us(iPhone 16 Pro Max).png => xespc-contact.png} (100%)
+ rename my-app/public/images/projects/xespc/{www.xespconsulting.com_projects(iPhone 16 Pro Max).png => xespc-projects.png} (100%)
+ rename my-app/public/images/projects/xespc/{www.xespconsulting.com_services(iPhone 16 Pro Max).png => xespc-services.png} (100%)
+
+diff --git a/my-app/app/projects/[slug]/page.tsx b/my-app/app/projects/[slug]/page.tsx
+index 7e2a589..b0884e2 100644
+--- a/my-app/app/projects/[slug]/page.tsx
++++ b/my-app/app/projects/[slug]/page.tsx
+@@ -1,3 +1,4 @@
++import Image from "next/image";
+ import { notFound } from "next/navigation";
+ import { getProject, projects } from "@/data/projects";
+ import ProjectCard from "@/components/ProjectCard";
+@@ -90,15 +91,32 @@ export default async function ProjectPage(
+         </Reveal>
+       )}
+       <div className="mt-5 grid gap-5 md:grid-cols-3">
+-        {[1, 2, 3].map((n) => (
+-          <Reveal
+-            key={n}
+-            delay={(n - 1) * 0.12}
+-            className="flex aspect-[3/4] items-center justify-center bg-charcoal text-[13px] tracking-widest text-mid"
+-          >
+-            IMAGE {n}
+-          </Reveal>
+-        ))}
++        {[0, 1, 2].map((i) => {
++          const img = p.images?.[i];
++          return (
++            <Reveal
++              key={i}
++              delay={i * 0.12}
++              className={
++                img
++                  ? "relative aspect-[1320/2868] overflow-hidden bg-charcoal"
++                  : "flex aspect-[3/4] items-center justify-center bg-charcoal text-[13px] tracking-widest text-mid"
++              }
++            >
++              {img ? (
++                <Image
++                  src={img.src}
++                  alt={img.alt}
++                  fill
++                  sizes="(min-width: 768px) 33vw, 100vw"
++                  className="object-cover"
++                />
++              ) : (
++                `IMAGE ${i + 1}`
++              )}
++            </Reveal>
++          );
++        })}
+       </div>
+ 
+       <div className="mt-16 grid gap-10 md:grid-cols-[1fr_2fr_2fr]">
+diff --git a/my-app/data/projects.ts b/my-app/data/projects.ts
+index bfdd5af..87a22f6 100644
+--- a/my-app/data/projects.ts
++++ b/my-app/data/projects.ts
+@@ -16,6 +16,9 @@ export type Project = {
+   // slowly follows the cursor. Put the file in public/images/projects/<client>/ and set e.g.
+   // logo: "/images/projects/vici/logo.svg" (SVG or PNG with a transparent background works best).
+   logo?: string;
++  // Screenshots shown in the three image slots under the hero on the project page.
++  // Put the files in public/images/projects/<client>/ and list up to three paths here.
++  images?: { src: string; alt: string }[];
+ };
+ 
+ // Placeholder image blocks on the project pages are still empty; add screenshots when ready.
+@@ -51,6 +54,20 @@ export const projects: Project[] = [
+     logo: "/images/projects/xespc/xespc-logo-transparent.png",
+     video: "/videos/xespc-vid.mp4",
+     poster: "/images/projects/xespc/xespc-poster.jpg",
++    images: [
++      {
++        src: "/images/projects/xespc/xespc-services.png",
++        alt: "XESP Consulting services page on mobile",
++      },
++      {
++        src: "/images/projects/xespc/xespc-projects.png",
++        alt: "XESP Consulting projects page on mobile",
++      },
++      {
++        src: "/images/projects/xespc/xespc-contact.png",
++        alt: "XESP Consulting contact page on mobile",
++      },
++    ],
+   },
+ ];
+ 
+diff --git a/my-app/public/images/projects/xespc/www.xespconsulting.com_contact-us(iPhone 16 Pro Max).png b/my-app/public/images/projects/xespc/xespc-contact.png
+similarity index 100%
+rename from my-app/public/images/projects/xespc/www.xespconsulting.com_contact-us(iPhone 16 Pro Max).png
+rename to my-app/public/images/projects/xespc/xespc-contact.png
+diff --git a/my-app/public/images/projects/xespc/www.xespconsulting.com_projects(iPhone 16 Pro Max).png b/my-app/public/images/projects/xespc/xespc-projects.png
+similarity index 100%
+rename from my-app/public/images/projects/xespc/www.xespconsulting.com_projects(iPhone 16 Pro Max).png
+rename to my-app/public/images/projects/xespc/xespc-projects.png
+diff --git a/my-app/public/images/projects/xespc/www.xespconsulting.com_services(iPhone 16 Pro Max).png b/my-app/public/images/projects/xespc/xespc-services.png
+similarity index 100%
+rename from my-app/public/images/projects/xespc/www.xespconsulting.com_services(iPhone 16 Pro Max).png
+rename to my-app/public/images/projects/xespc/xespc-services.png
+-- 
+2.43.0
+
