@@ -93,38 +93,24 @@ export default async function ProjectPage(
       <div className="mt-5 grid gap-5 md:grid-cols-3">
         {[0, 1, 2].map((i) => {
           const img = p.images?.[i];
-          // Same frame as a project card (charcoal, 20px padding, 4:3 picture area), without the text row.
+          // Same size and shape as the original placeholder blocks (3:4).
           return (
-            <Reveal key={i} delay={i * 0.12} className="bg-charcoal p-5">
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-charcoal">
-                {img ? (
-                  <>
-                    {/* Blurred black-and-white copy behind the screenshot, like the card preview */}
-                    <Image
-                      src={img.src}
-                      alt=""
-                      aria-hidden
-                      fill
-                      sizes="200px"
-                      className="scale-125 object-cover opacity-80 blur-2xl grayscale"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Image
-                        src={img.src}
-                        alt={img.alt}
-                        width={1320}
-                        height={2868}
-                        sizes="(min-width: 768px) 20vw, 60vw"
-                        className="h-[88%] w-auto shadow-2xl"
-                      />
-                    </div>
-                  </>
-                ) : (
-                  <div className="flex h-full items-center justify-center bg-mist/10 text-[13px] tracking-widest text-mid">
-                    IMAGE {i + 1}
-                  </div>
-                )}
-              </div>
+            <Reveal
+              key={i}
+              delay={i * 0.12}
+              className="relative flex aspect-[3/4] items-center justify-center overflow-hidden bg-charcoal text-[13px] tracking-widest text-mid"
+            >
+              {img ? (
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-cover object-top"
+                />
+              ) : (
+                `IMAGE ${i + 1}`
+              )}
             </Reveal>
           );
         })}
