@@ -126,7 +126,7 @@ export default function ContactReveal() {
         aria-label="Contact"
         // Hidden until GSAP takes over, so there is no flash before hydration.
         style={{ visibility: "hidden" }}
-        className="theme-dark-panel fixed inset-0 z-40 flex flex-col justify-between bg-ink px-5 pb-24 pt-32 text-paper"
+        className="theme-dark-panel fixed inset-0 z-40 flex flex-col justify-between overflow-y-auto overscroll-contain bg-ink px-5 pb-16 pt-24 text-paper md:pb-24 md:pt-32"
       >
         <div className="grid-lines" aria-hidden>
           {Array.from({ length: 12 }, (_, i) => (

@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import CopyButton from "@/components/CopyButton";
 
 const row =
-  "group flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:text-accent";
+  "group flex items-center justify-between gap-4 px-4 py-3 transition-colors hover:text-accent md:px-5 md:py-4";
 const arrow =
   "shrink-0 text-[0.8em] opacity-60 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100";
 
@@ -17,8 +17,8 @@ export default function ContactPanel({
   heading?: "h1" | "p";
 }) {
   return (
-    <div className="grid flex-1 gap-10 md:grid-cols-12 md:gap-x-5">
-      <div className="flex flex-col justify-between gap-10 md:col-span-7">
+    <div className="grid flex-1 gap-6 md:grid-cols-12 md:gap-10 md:gap-x-5">
+      <div className="flex flex-col justify-between gap-5 md:col-span-7 md:gap-10">
         <div>
           <p className="flex items-center gap-2 text-[15px] uppercase tracking-normal">
             <span aria-hidden className="inline-block h-2 w-2 bg-accent" />
@@ -32,7 +32,7 @@ export default function ContactPanel({
             />
           </Heading>
         </div>
-        <p className="lead max-w-xl">{site.contactLine}</p>
+        <p className="lead contact-intro max-w-xl">{site.contactLine}</p>
       </div>
 
       <ul className="divide-y divide-current/20 self-end border border-current/20 md:col-span-5 md:col-start-8 lg:col-span-4 lg:col-start-9">
