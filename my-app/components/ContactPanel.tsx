@@ -22,7 +22,7 @@ export default function ContactPanel({
             <span aria-hidden className="inline-block h-2 w-2 bg-accent" />
             Say Hello
           </p>
-          <Heading className="mt-6 whitespace-nowrap text-[clamp(3rem,min(19vw,26svh),15rem)] font-medium leading-[0.85] tracking-[-0.065em] md:text-[clamp(4rem,min(12vw,26svh),15rem)]">
+          <Heading className="mt-6 whitespace-nowrap text-[clamp(3rem,min(19vw,26svh),15rem)] font-medium leading-[0.85] tracking-[-0.065em] md:text-[clamp(4rem,min(11vw,26svh),15rem)] lg:text-[clamp(4rem,min(12vw,26svh),15rem)]">
             Let&apos;s talk
             <span
               aria-hidden
@@ -33,7 +33,7 @@ export default function ContactPanel({
         <p className="lead max-w-xl">{site.contactLine}</p>
       </div>
 
-      <ul className="divide-y divide-current/20 self-end border border-current/20 md:col-span-4 md:col-start-9">
+      <ul className="divide-y divide-current/20 self-end border border-current/20 md:col-span-5 md:col-start-8 lg:col-span-4 lg:col-start-9">
         <li>
           <a
             href={`mailto:${site.email}`}
