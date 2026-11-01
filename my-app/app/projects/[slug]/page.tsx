@@ -93,24 +93,42 @@ export default async function ProjectPage(
       <div className="mt-5 grid gap-5 md:grid-cols-3">
         {[0, 1, 2].map((i) => {
           const img = p.images?.[i];
-          // Same size and shape as the original placeholder blocks (3:4).
+          // Project card styling (charcoal frame, 20px padding, blurred black-and-white backdrop),
+          // at the placeholder size (3:4), without the text row.
           return (
             <Reveal
               key={i}
               delay={i * 0.12}
-              className="relative flex aspect-[3/4] items-center justify-center overflow-hidden bg-charcoal text-[13px] tracking-widest text-mid"
+              className="aspect-[3/4] bg-charcoal p-5"
             >
-              {img ? (
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(min-width: 768px) 33vw, 100vw"
-                  className="object-cover object-top"
-                />
-              ) : (
-                `IMAGE ${i + 1}`
-              )}
+              <div className="relative h-full w-full overflow-hidden bg-charcoal">
+                {img ? (
+                  <>
+                    <Image
+                      src={img.src}
+                      alt=""
+                      aria-hidden
+                      fill
+                      sizes="200px"
+                      className="scale-125 object-cover opacity-80 blur-2xl grayscale"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        width={1320}
+                        height={2868}
+                        sizes="(min-width: 768px) 25vw, 70vw"
+                        className="h-[88%] w-auto shadow-2xl"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <div className="flex h-full items-center justify-center bg-mist/10 text-[13px] tracking-widest text-mid">
+                    IMAGE {i + 1}
+                  </div>
+                )}
+              </div>
             </Reveal>
           );
         })}
