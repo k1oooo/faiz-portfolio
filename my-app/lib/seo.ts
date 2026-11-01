@@ -4,7 +4,7 @@ import { site } from "@/data/site";
 // The production address. Set NEXT_PUBLIC_SITE_URL (for example when you add a custom
 // domain) and everything below follows: canonical links, sitemap, share previews.
 export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://faizfami-portfolio.vercel.app"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://faizfahmi.vercel.app"
 ).replace(/\/$/, "");
 
 export const personName = "Faiz Fahmi";
