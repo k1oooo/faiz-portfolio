@@ -78,6 +78,13 @@ body {
   font-weight: 500;
 }
 
+/* Home hero on phones: "Projects" fills the width with '26 stacked underneath, left-aligned. */
+@media (max-width: 767px) {
+  .mega-hero {
+    font-size: 23vw;
+  }
+}
+
 .lead {
   font-size: clamp(1.5rem, 2.1vw, 2.6rem);
   line-height: 1;

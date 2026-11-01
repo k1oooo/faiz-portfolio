@@ -16,11 +16,11 @@ export default function Home() {
       <h1 className="sr-only">
         Faiz Fahmi, Full Stack Web Developer in Kuala Lumpur. I design and code it.
       </h1>
-      <section className="flex h-[66svh] min-h-[420px] items-center justify-between pt-10">
-        <Reveal as="h2" className="mega">
+      <section className="flex h-[66svh] min-h-[420px] flex-col items-start justify-center gap-[0.12em] pt-10 md:flex-row md:items-center md:justify-between md:gap-0">
+        <Reveal as="h2" className="mega mega-hero">
           Projects
         </Reveal>
-        <Reveal as="span" delay={0.15} className="mega flex items-start">
+        <Reveal as="span" delay={0.15} className="mega mega-hero flex items-start">
           <span
             aria-hidden
             className="mr-[0.06em] mt-[0.1em] inline-block h-[0.215em] w-[0.08em] bg-accent"
