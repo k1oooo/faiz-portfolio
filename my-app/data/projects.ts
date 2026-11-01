@@ -19,6 +19,9 @@ export type Project = {
   // Screenshots shown in the three image slots under the hero on the project page.
   // Put the files in public/images/projects/<client>/ and list up to three paths here.
   images?: { src: string; alt: string }[];
+  // Short phone-shaped screen recordings for the same three slots (a video wins over an image).
+  // Put the files in public/videos/ and list up to three paths here.
+  slotVideos?: { src: string; alt: string }[];
 };
 
 // Placeholder image blocks on the project pages are still empty; add screenshots when ready.
@@ -38,6 +41,20 @@ export const projects: Project[] = [
     logo: "/images/projects/vici/vici-logo-transparent.png",
     video: "/videos/vici-vid.mp4",
     poster: "/images/projects/vici/vici-hero-image.png",
+    slotVideos: [
+      {
+        src: "/videos/vici-vid-about.mp4",
+        alt: "Vici website about page recording",
+      },
+      {
+        src: "/videos/vici-vid-services.mp4",
+        alt: "Vici website services page recording",
+      },
+      {
+        src: "/videos/vici-vid-work.mp4",
+        alt: "Vici website work page recording",
+      },
+    ],
   },
   {
     slug: "xesp-consulting-corporate-website",

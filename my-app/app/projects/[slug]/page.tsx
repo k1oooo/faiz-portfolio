@@ -93,6 +93,7 @@ export default async function ProjectPage(
       <div className="mt-5 grid gap-5 md:grid-cols-3">
         {[0, 1, 2].map((i) => {
           const img = p.images?.[i];
+          const vid = p.slotVideos?.[i];
           // Project card styling (charcoal frame, 20px padding, blurred black-and-white backdrop),
           // at the placeholder size (3:4), without the text row.
           return (
@@ -102,7 +103,32 @@ export default async function ProjectPage(
               className="aspect-[3/4] bg-charcoal p-5"
             >
               <div className="relative h-full w-full overflow-hidden bg-charcoal">
-                {img ? (
+                {vid ? (
+                  <>
+                    {/* Blurred black-and-white first frame behind the recording */}
+                    <video
+                      src={`${vid.src}#t=0.1`}
+                      muted
+                      playsInline
+                      preload="metadata"
+                      aria-hidden
+                      tabIndex={-1}
+                      className="absolute inset-0 h-full w-full scale-125 object-cover opacity-80 blur-2xl grayscale"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <video
+                        src={`${vid.src}#t=0.1`}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="auto"
+                        aria-label={vid.alt}
+                        className="h-[88%] w-auto bg-black shadow-2xl"
+                      />
+                    </div>
+                  </>
+                ) : img ? (
                   <>
                     <Image
                       src={img.src}
