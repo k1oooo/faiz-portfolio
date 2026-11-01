@@ -1,7 +1,13 @@
+import { pageMetadata } from "@/lib/seo";
 import ContactPanel from "@/components/ContactPanel";
 import Reveal from "@/components/Reveal";
 
-export const metadata = { title: "Contacts | Faiz" };
+export const metadata = pageMetadata({
+  title: "Contact",
+  description:
+    "Get in touch with Faiz Fahmi, a full stack web developer in Kuala Lumpur. Tell me about your project and I will design and code it.",
+  path: "/contacts",
+});
 
 export default function Contacts() {
   return (

@@ -3,8 +3,14 @@ import { site } from "@/data/site";
 import TechStack from "@/components/TechStack";
 import HowIWork from "@/components/HowIWork";
 import Reveal from "@/components/Reveal";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = { title: "About | Faiz" };
+export const metadata = pageMetadata({
+  title: "About",
+  description:
+    "Faiz Fahmi is a full stack web developer and designer in Kuala Lumpur and co-founder of Vici Software Development. I design and code it, from Figma to a live Next.js site.",
+  path: "/about",
+});
 
 export default function About() {
   return (
@@ -22,7 +28,7 @@ export default function About() {
               aria-hidden
               className="ml-[0.03em] inline-block h-[0.1em] w-[0.1em] bg-accent"
             />
-            <span className="sr-only">.</span>
+            <span className="sr-only">. I&apos;m Faiz Fahmi, a Full Stack Web Developer in Kuala Lumpur.</span>
           </Reveal>
           <Reveal
             delay={0.15}

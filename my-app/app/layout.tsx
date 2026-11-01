@@ -7,6 +7,8 @@ import ContactReveal from "@/components/ContactReveal";
 import ThemeSync from "@/components/ThemeSync";
 import ScrollToTop from "@/components/ScrollToTop";
 import CustomCursor from "@/components/CustomCursor";
+import JsonLd from "@/components/JsonLd";
+import { defaultDescription, personName, siteName, siteUrl } from "@/lib/seo";
 
 const sans = Inter_Tight({
   variable: "--font-sans-display",
@@ -14,23 +16,43 @@ const sans = Inter_Tight({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://faizfami-portfolio.vercel.app"),
-  title: "Faiz | AI Student & Web Designer",
-  description:
-    "Portfolio of Faiz, an AI student and freelance web designer based in Kuala Lumpur.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Faiz Fahmi | Full Stack Web Developer in Kuala Lumpur",
+    template: "%s | Faiz Fahmi",
+  },
+  description: defaultDescription,
+  applicationName: siteName,
+  keywords: [
+    "full stack web developer",
+    "web developer Kuala Lumpur",
+    "freelance web developer Malaysia",
+    "Next.js developer",
+    "React developer",
+    "TypeScript",
+    "web design and development",
+    "Faiz Fahmi",
+  ],
+  authors: [{ name: personName, url: siteUrl }],
+  creator: personName,
+  alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
   openGraph: {
-    title: "Faiz | AI Student & Web Designer",
-    description:
-      "Portfolio of Faiz, an AI student and freelance web designer based in Kuala Lumpur.",
+    title: "Faiz Fahmi | Full Stack Web Developer in Kuala Lumpur",
+    description: defaultDescription,
     url: "/",
-    siteName: "Faiz",
+    siteName,
+    locale: "en_MY",
     type: "website",
   },
   twitter: {
-    card: "summary",
-    title: "Faiz | AI Student & Web Designer",
-    description:
-      "Portfolio of Faiz, an AI student and freelance web designer based in Kuala Lumpur.",
+    card: "summary_large_image",
+    title: "Faiz Fahmi | Full Stack Web Developer in Kuala Lumpur",
+    description: defaultDescription,
   },
 };
 
@@ -47,6 +69,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <div key={i} />
           ))}
         </div>
+        <JsonLd />
         <ThemeSync />
         <ScrollToTop />
         <CustomCursor />

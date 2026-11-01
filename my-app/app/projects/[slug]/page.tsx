@@ -3,6 +3,9 @@ import { getProject, projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import Reveal from "@/components/Reveal";
 import VideoFrame from "@/components/VideoFrame";
+import { JsonLdScript } from "@/components/JsonLd";
+import type { Metadata } from "next";
+import { jobTitle, pageMetadata, personName, siteUrl } from "@/lib/seo";
 
 // All project pages are prerendered from generateStaticParams, so the page is allowed to
 // read params directly instead of streaming it behind a Suspense fallback.
@@ -10,6 +13,20 @@ export const instant = false;
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata(
+  props: PageProps<"/projects/[slug]">,
+): Promise<Metadata> {
+  const { slug } = await props.params;
+  const p = getProject(slug);
+  if (!p) return {};
+  return pageMetadata({
+    title: p.title,
+    description: `${p.summary} Designed and coded by ${personName}, ${jobTitle} in Kuala Lumpur.`,
+    path: `/projects/${p.slug}`,
+    image: p.poster,
+  });
 }
 
 export default async function ProjectPage(
@@ -26,6 +43,20 @@ export default async function ProjectPage(
 
   return (
     <main className="px-5 pb-32 pt-48">
+      <JsonLdScript
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: p.title,
+          description: p.summary,
+          url: `${siteUrl}/projects/${p.slug}`,
+          dateCreated: p.year,
+          keywords: p.tags.join(", "),
+          creator: { "@id": `${siteUrl}/#person` },
+          ...(p.poster && { image: `${siteUrl}${p.poster}` }),
+          ...(p.url && { sameAs: p.url }),
+        }}
+      />
       <Reveal
         as="h1"
         className="text-[clamp(3rem,10vw,10rem)] leading-[0.9] tracking-[-0.06em]"
