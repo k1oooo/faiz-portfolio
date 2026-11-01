@@ -1,9 +1,11 @@
 import { site } from "@/data/site";
+import { ArrowUpRight } from "lucide-react";
+import CopyButton from "@/components/CopyButton";
 
 const row =
   "group flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:text-accent";
 const arrow =
-  "text-[0.7em] opacity-60 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100";
+  "shrink-0 text-[0.8em] opacity-60 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100";
 
 // Shared contact content, used by the /contacts page and the slide-up panel.
 // Layout: small "Say Hello" label and a giant one-line "Let's talk" headline on the left with
@@ -34,34 +36,44 @@ export default function ContactPanel({
       </div>
 
       <ul className="divide-y divide-current/20 self-end border border-current/20 md:col-span-5 md:col-start-8 lg:col-span-4 lg:col-start-9">
-        <li>
+        <li className="flex items-stretch">
           <a
             href={`mailto:${site.email}`}
-            className={`${row} flex-col !items-start !gap-1`}
+            className={`${row} min-w-0 flex-1 flex-col !items-start !gap-1`}
           >
             <span className="label">Email</span>
             <span className="flex w-full items-center justify-between gap-4 break-all text-[clamp(1.1rem,1.6vw,2rem)] leading-[1.15] tracking-[-0.04em]">
               {site.email}
               <span aria-hidden className={arrow}>
-                ↗
+                <ArrowUpRight className="h-[1em] w-[1em]" strokeWidth={1.75} />
               </span>
             </span>
           </a>
+          <CopyButton
+            value={site.email}
+            label="email address"
+            className="w-14 shrink-0 border-l border-current/20"
+          />
         </li>
         {site.phone && (
-          <li>
+          <li className="flex items-stretch">
             <a
               href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}
-              className={`${row} flex-col !items-start !gap-1`}
+              className={`${row} min-w-0 flex-1 flex-col !items-start !gap-1`}
             >
               <span className="label">Phone</span>
               <span className="flex w-full items-center justify-between gap-4 text-[clamp(1.1rem,1.6vw,2rem)] leading-[1.15] tracking-[-0.04em]">
                 {site.phone}
                 <span aria-hidden className={arrow}>
-                  ↗
+                  <ArrowUpRight className="h-[1em] w-[1em]" strokeWidth={1.75} />
                 </span>
               </span>
             </a>
+            <CopyButton
+              value={site.phone}
+              label="phone number"
+              className="w-14 shrink-0 border-l border-current/20"
+            />
           </li>
         )}
         {site.links.map((l) => {
@@ -77,7 +89,7 @@ export default function ContactPanel({
               >
                 {l.label}
                 <span aria-hidden className={arrow}>
-                  ↗
+                  <ArrowUpRight className="h-[1em] w-[1em]" strokeWidth={1.75} />
                 </span>
               </a>
             </li>

@@ -4,6 +4,7 @@ import { getProject, projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import Reveal from "@/components/Reveal";
 import VideoFrame from "@/components/VideoFrame";
+import { ArrowUpRight } from "lucide-react";
 import { JsonLdScript } from "@/components/JsonLd";
 import type { Metadata } from "next";
 import { jobTitle, pageMetadata, personName, siteUrl } from "@/lib/seo";
@@ -178,9 +179,10 @@ export default async function ProjectPage(
             href={p.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block text-[15px] text-accent underline underline-offset-4 transition-opacity hover:opacity-70"
+            className="inline-flex items-center gap-2 text-[15px] text-accent underline underline-offset-4 transition-opacity hover:opacity-70"
           >
-            VISIT WEBSITE ↗
+            VISIT WEBSITE
+            <ArrowUpRight className="h-[1em] w-[1em]" strokeWidth={1.75} />
           </a>
         </Reveal>
       )}
