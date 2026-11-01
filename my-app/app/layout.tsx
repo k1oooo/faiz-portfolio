@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter_Tight } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Clock from "@/components/Clock";
@@ -79,6 +81,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </div>
         <ContactReveal />
         <Clock />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
