@@ -72,7 +72,7 @@ body {
 }
 
 .mega {
-  font-size: clamp(4.5rem, 14vw, 17rem);
+  font-size: clamp(5rem, 16vw, 19rem);
   line-height: 0.82;
   letter-spacing: -0.065em;
   font-weight: 500;
@@ -81,7 +81,7 @@ body {
 /* Home hero on phones: "Projects" fills the width with '26 stacked underneath, left-aligned. */
 @media (max-width: 767px) {
   .mega-hero {
-    font-size: 23vw;
+    font-size: 25vw;
   }
 }
 
