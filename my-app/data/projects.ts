@@ -16,6 +16,9 @@ export type Project = {
   // slowly follows the cursor. Put the file in public/images/projects/<client>/ and set e.g.
   // logo: "/images/projects/vici/logo.svg" (SVG or PNG with a transparent background works best).
   logo?: string;
+  // Screenshots shown in the three image slots under the hero on the project page.
+  // Put the files in public/images/projects/<client>/ and list up to three paths here.
+  images?: { src: string; alt: string }[];
 };
 
 // Placeholder image blocks on the project pages are still empty; add screenshots when ready.
@@ -51,6 +54,20 @@ export const projects: Project[] = [
     logo: "/images/projects/xespc/xespc-logo-transparent.png",
     video: "/videos/xespc-vid.mp4",
     poster: "/images/projects/xespc/xespc-poster.jpg",
+    images: [
+      {
+        src: "/images/projects/xespc/xespc-services.png",
+        alt: "XESP Consulting services page on mobile",
+      },
+      {
+        src: "/images/projects/xespc/xespc-projects.png",
+        alt: "XESP Consulting projects page on mobile",
+      },
+      {
+        src: "/images/projects/xespc/xespc-contact.png",
+        alt: "XESP Consulting contact page on mobile",
+      },
+    ],
   },
 ];
 

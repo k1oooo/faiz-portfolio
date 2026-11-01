@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getProject, projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
@@ -90,15 +91,32 @@ export default async function ProjectPage(
         </Reveal>
       )}
       <div className="mt-5 grid gap-5 md:grid-cols-3">
-        {[1, 2, 3].map((n) => (
-          <Reveal
-            key={n}
-            delay={(n - 1) * 0.12}
-            className="flex aspect-[3/4] items-center justify-center bg-charcoal text-[13px] tracking-widest text-mid"
-          >
-            IMAGE {n}
-          </Reveal>
-        ))}
+        {[0, 1, 2].map((i) => {
+          const img = p.images?.[i];
+          return (
+            <Reveal
+              key={i}
+              delay={i * 0.12}
+              className={
+                img
+                  ? "relative aspect-[1320/2868] overflow-hidden bg-charcoal"
+                  : "flex aspect-[3/4] items-center justify-center bg-charcoal text-[13px] tracking-widest text-mid"
+              }
+            >
+              {img ? (
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-cover"
+                />
+              ) : (
+                `IMAGE ${i + 1}`
+              )}
+            </Reveal>
+          );
+        })}
       </div>
 
       <div className="mt-16 grid gap-10 md:grid-cols-[1fr_2fr_2fr]">
