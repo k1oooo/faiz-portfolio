@@ -91,7 +91,9 @@ export default async function ProjectPage(
           HERO IMAGE
         </Reveal>
       )}
-      <div className="mt-5 grid gap-5 md:grid-cols-3">
+      {/* Phones and tablets: swipeable row, one frame about 3/4 of the screen (about half on tablets),
+          the next one peeking in. Laptops and up: the three frames side by side. */}
+      <div className="-mx-5 mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:gap-4 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden">
         {[0, 1, 2].map((i) => {
           const img = p.images?.[i];
           const vid = p.slotVideos?.[i];
@@ -101,7 +103,7 @@ export default async function ProjectPage(
             <Reveal
               key={i}
               delay={i * 0.12}
-              className="aspect-[3/4] bg-charcoal p-5"
+              className="aspect-[3/4] w-[78%] shrink-0 snap-center bg-charcoal p-3 sm:w-[46%] sm:p-4 lg:w-auto lg:p-5"
             >
               <div className="relative h-full w-full overflow-hidden bg-charcoal">
                 {vid ? (
