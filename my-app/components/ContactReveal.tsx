@@ -50,21 +50,18 @@ export default function ContactReveal() {
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       gsap.set(panel, { visibility: "visible" });
-      // While the visitor scrolls through the spacer, the page is pushed down by the
-      // same distance, so it stays put on screen and the panel slides up over it.
-      // Scrub is exact (no smoothing) so the page never drifts against the scroll.
+      // The page is held on screen by CSS sticky (see below), so only the panel moves here.
       gsap
         .timeline({
           defaults: { ease: "none" },
           scrollTrigger: {
             ...trigger,
-            scrub: true,
+            scrub: 0.3,
             invalidateOnRefresh: true,
             onUpdate: (self) => setOpen(self.progress > 0.97),
           },
         })
-        .fromTo(panel, { yPercent: 100 }, { yPercent: 0 }, 0)
-        .fromTo(page, { y: 0 }, { y: () => spacer.offsetHeight - pause() }, 0);
+        .fromTo(panel, { yPercent: 100 }, { yPercent: 0 }, 0);
     });
 
     // Reduced motion: no sliding, the panel simply appears near the bottom.
@@ -80,17 +77,36 @@ export default function ContactReveal() {
       });
     });
 
+    // Keep the page still while the panel slides over it. This is done with position: sticky
+    // instead of moving the page with JavaScript, because the browser scrolls on its own
+    // thread and a JS counter-movement always lags a frame behind, which showed as jitter.
+    // Sticky lets the browser hold the page itself, so nothing can drift. The page sticks
+    // once its bottom edge (plus the blank pause) has scrolled into view.
+    const pin = () => {
+      const top = Math.min(0, window.innerHeight - page.offsetHeight - pause());
+      page.style.position = "sticky";
+      page.style.top = `${top}px`;
+    };
+    pin();
+
     // Page height changes after navigation and font loading, so keep triggers accurate.
     let frame = 0;
     const observer = new ResizeObserver(() => {
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => ScrollTrigger.refresh());
+      frame = requestAnimationFrame(() => {
+        pin();
+        ScrollTrigger.refresh();
+      });
     });
     observer.observe(document.body);
+    window.addEventListener("resize", pin);
 
     return () => {
       cancelAnimationFrame(frame);
       observer.disconnect();
+      window.removeEventListener("resize", pin);
+      page.style.position = "";
+      page.style.top = "";
       mm.revert();
       page.inert = false;
     };
