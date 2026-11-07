@@ -24,6 +24,17 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide scrollbars (page and slide-up contact panel) while keeping scrolling working */
+html,
+.theme-dark-panel {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar,
+.theme-dark-panel::-webkit-scrollbar {
+  display: none;
+}
+
 /* The one accent colour also shows up when selecting text */
 ::selection {
   background: var(--color-accent);
