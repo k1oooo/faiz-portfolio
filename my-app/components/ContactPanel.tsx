@@ -17,8 +17,8 @@ export default function ContactPanel({
   heading?: "h1" | "p";
 }) {
   return (
-    <div className="grid flex-1 gap-6 md:grid-cols-12 md:gap-10 md:gap-x-5">
-      <div className="flex flex-col justify-between gap-5 md:col-span-7 md:gap-10">
+    <div className="grid flex-1 grid-rows-[1fr_auto] gap-8 md:grid-cols-12 md:grid-rows-none md:gap-10 md:gap-x-5">
+      <div className="flex flex-col gap-6 md:col-span-7 md:justify-between md:gap-10">
         <div>
           <p className="flex items-center gap-2 text-[15px] uppercase tracking-normal">
             <span aria-hidden className="inline-block h-2 w-2 bg-accent" />
