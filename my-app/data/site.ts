@@ -15,7 +15,7 @@ export const site = {
     }, // TODO
     { label: "Resume", href: "#" }, // TODO
   ],
-  bio: "I'm Faiz, a web developer and designer in Kuala Lumpur, studying Artificial Intelligence at UTM. I co-founded Vici Software Development, building web apps and corporate websites for growing businesses, and I take on freelance projects too.",
+  bio: "I'm Faiz, a web developer and designer based in Kuala Lumpur, currently pursuing a Bachelor of Artificial Intelligence with Honours at Universiti Teknologi Malaysia (UTM), Kuala Lumpur. I co-founded Vici Software Development, a startup company, and I take on freelance full stack website projects where I design and code.",
   contactLine:
     "Have a project in mind, or just want to say hi? Send me an email or give me a call, and let's talk through your idea.",
   // The "How I work" section on the About page.
